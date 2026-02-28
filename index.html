@@ -4,29 +4,42 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Noto+Sans+SC:wght@100;300;400;700&display=swap"
             rel="stylesheet"
         />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         />
+
         <style>
             :root {
-                --primary: #1b5e20; /* 更深沉的高级绿 */
-                --primary-light: #43a047;
-                --accent: #c5a059; /* 高级香槟金 */
-                --text-dark: #2c3e50;
-                --text-muted: #546e7a;
+                /* 配色升级：SF 风格的深邃绿与哑光金 */
+                --primary: #1d3d20; /* 极深绿，更显沉稳 */
+                --accent: #d2b48c; /* 哑光金/香槟金 */
+                --text-main: #1d1d1f; /* Apple 风格的深灰黑 */
+                --text-muted: #86868b; /* Apple 风格的副标题灰 */
                 --white: #ffffff;
-                --bg-light: #f8f9fa;
-                --glass: rgba(255, 255, 255, 0.9);
-                --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-                --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
-                --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                --bg-light: #f5f5f7; /* Apple 风格的浅灰背景 */
+
+                /* 玻璃效果核心参数 */
+                --glass-bg: rgba(255, 255, 255, 0.72); /* 72% 纯净白色背景 */
+                --glass-blur: blur(20px) saturate(180%); /* 高级模糊与饱和度 */
+                --glass-border: rgba(0, 0, 0, 0.08); /* 极细的深色边框线 */
+
+                /* 阴影与过渡 */
+                --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+                --shadow-elevated: 0 10px 30px rgba(0, 0, 0, 0.08);
+                --transition-apple: all 0.4s
+                    cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 苹果风格的平滑过渡 */
+
+                /* 呼吸感留白 */
+                --gap-lg: 120px;
+                --gap-md: 60px;
             }
 
             * {
@@ -37,170 +50,210 @@
 
             html {
                 scroll-behavior: smooth;
-            }
-
-            body {
-                font-family: "Poppins", "Noto Sans SC", sans-serif;
-                color: var(--text-dark);
-                line-height: 1.7;
+                font-family:
+                    "Inter",
+                    "Noto Sans SC",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    sans-serif;
+                -webkit-font-smoothing: antialiased; /* 启用抗锯齿，使字体更清透 */
+                color: var(--text-main);
                 background-color: var(--white);
             }
 
-            /* 语言切换按钮 - 悬浮胶囊样式 */
+            body {
+                line-height: 1.47059;
+                letter-spacing: -0.022em;
+            } /* 模拟 Apple 的行高与字距 */
+
+            /* =========================================
+               语言切换按钮 - 玻璃拟态胶囊
+               ========================================= */
             .lang-switch {
-                position: fixed;
-                top: 90px;
-                right: 20px;
-                z-index: 1001;
-                background: var(--primary);
-                color: white;
-                border: none;
-                padding: 10px 22px;
-                border-radius: 50px;
+                background: transparent;
+                border: 1px solid var(--primary);
+                color: var(--primary);
+                padding: 8px 16px;
+                border-radius: 20px;
                 cursor: pointer;
-                font-weight: 600;
-                font-size: 13px;
-                letter-spacing: 1px;
-                box-shadow: var(--shadow-md);
-                transition: var(--transition);
+                font-weight: 500;
+                font-size: 12px;
+                margin-left: 15px;
+                transition: all 0.3s ease;
             }
             .lang-switch:hover {
-                transform: scale(1.05);
-                background: var(--accent);
+                background: var(--primary);
+                color: white;
             }
 
-            /* Navigation - 玻璃拟态设计 */
+            /* =========================================
+               Navigation - 深度优化布局
+               ========================================= */
             .navbar {
                 position: fixed;
                 top: 0;
                 left: 0;
                 right: 0;
                 z-index: 1000;
-                background: var(--glass);
-                backdrop-filter: blur(15px);
-                padding: 10px 5%;
+                background: var(--glass-bg);
+                backdrop-filter: var(--glass-blur);
+                border-bottom: 1px solid var(--glass-border);
+                padding: 0 8%; /* 增大侧边留白 */
+                height: 72px; /* 固定高度，更显精致 */
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                transition: var(--transition-apple);
+            }
+
+            .logo {
+                display: flex;
+                align-items: center;
+            }
+            .logo-text {
+                display: flex;
+                flex-direction: column;
+                line-height: 1.1;
+            }
+            .logo-main {
+                font-size: 24px;
+                font-weight: 800;
+                color: var(--primary);
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .logo-sub {
+                font-size: 11px;
+                font-weight: 600;
+                color: var(--accent);
+                letter-spacing: 6px;
+                text-transform: uppercase;
             }
             .logo img {
-                height: 65px;
-                width: auto;
-                transition: var(--transition);
+                display: none; /* Hide old logo */
             }
+
             .nav-links {
                 display: flex;
-                gap: 35px;
+                gap: 40px; /* 增大间距，给文字以呼吸空间 */
                 align-items: center;
             }
             .nav-links a {
                 text-decoration: none;
-                color: var(--text-dark);
-                font-weight: 500;
+                color: var(--text-main);
+                font-weight: 400;
                 font-size: 14px;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-                transition: var(--transition);
+                text-transform: lowercase; /* SF 风格的全部小写，更显高级 */
+                letter-spacing: -0.01em;
+                opacity: 0.8;
+                transition: var(--transition-apple);
             }
-            .nav-links a:not(.btn-quote):hover {
+            .nav-links a:hover {
+                opacity: 1;
                 color: var(--accent);
             }
 
             .btn-quote {
                 background: var(--primary);
                 color: white !important;
-                padding: 12px 28px;
+                padding: 8px 16px;
                 border-radius: 4px;
-                font-weight: 600;
-                border: 2px solid var(--primary);
+                font-weight: 500;
+                text-transform: capitalize; /* 首字母大写 */
+                opacity: 1 !important;
             }
             .btn-quote:hover {
-                background: transparent;
-                color: var(--primary) !important;
+                background: var(--accent);
             }
 
-            /* Hero Section - 沉浸式设计 */
+            /* =========================================
+               Hero Section - 全屏沉浸
+               ========================================= */
             .hero {
                 height: 100vh;
                 background:
-                    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
-                    url("Pic%20of%20website/Pic_Home.png");
-                background-size: cover;
-                background-position: center;
-                background-attachment: fixed;
+                    linear-gradient(
+                        180deg,
+                        rgba(0, 0, 0, 0.2) 0%,
+                        rgba(0, 0, 0, 0.5) 100%
+                    ),
+                    url("Pic%20of%20website/Pic_Home.png") center/cover
+                        no-repeat fixed;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 text-align: center;
                 color: white;
-                padding: 0 20px;
+                padding: 0 10%;
             }
             .hero-content h1 {
-                font-size: clamp(2rem, 5vw, 4rem);
-                font-weight: 700;
-                margin-bottom: 20px;
-                letter-spacing: -1px;
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+                font-size: clamp(
+                    2.5rem,
+                    8vw,
+                    5.5rem
+                ); /* 更夸张、更有视觉冲击力的标题 */
+                margin-bottom: 25px;
+                font-weight: 800;
+                letter-spacing: -0.04em; /* 标题采用紧凑字距 */
+                line-height: 1.05;
             }
             .hero-content .headline {
-                font-size: clamp(1rem, 2vw, 1.4rem);
-                margin-bottom: 40px;
+                font-size: clamp(1.2rem, 3vw, 1.8rem);
+                margin-bottom: 50px;
                 font-weight: 300;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
+                max-width: 900px;
+                margin-inline: auto;
                 opacity: 0.9;
+                line-height: 1.4;
             }
 
-            /* 通用标题样式 */
+            /* =========================================
+               Common Section
+               ========================================= */
             .section {
-                padding: 100px 8%;
-            }
+                padding: var(--gap-lg) 8%;
+            } /* 增大上下呼吸感 */
+
             .section-title {
                 text-align: center;
-                font-size: 2.8rem;
+                font-size: clamp(2rem, 5vw, 3.2rem);
                 font-weight: 700;
+                letter-spacing: -0.03em;
                 margin-bottom: 10px;
-                position: relative;
-                padding-bottom: 20px;
-            }
-            .section-title::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 60px;
-                height: 4px;
-                background: var(--accent);
             }
             .section-subtitle {
                 text-align: center;
                 color: var(--text-muted);
-                font-size: 1.1rem;
-                margin-bottom: 60px;
+                font-size: 1.2rem;
                 font-weight: 300;
+                margin-bottom: var(--gap-md);
+                max-width: 600px;
+                margin-inline: auto;
             }
 
-            /* Services - 现代卡片 */
+            /* Services - 玻璃卡片 */
             .services-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
                 gap: 40px;
             }
             .service-card {
-                background: white;
-                border-radius: 0;
+                background: var(--glass-bg);
+                backdrop-filter: var(--glass-blur);
+                border: 1px solid var(--glass-border);
+                border-radius: 12px;
+                box-shadow: var(--shadow-subtle);
+                transition: var(--transition-apple);
                 overflow: hidden;
-                box-shadow: var(--shadow-sm);
-                transition: var(--transition);
-                border: 1px solid #eee;
+                display: flex;
+                flex-direction: column;
             }
             .service-card:hover {
-                transform: translateY(-10px);
-                box-shadow: var(--shadow-md);
-                border-color: var(--accent);
+                transform: translateY(-8px);
+                border-color: rgba(210, 180, 140, 0.3); /* 微微显现金色边框线 */
+                box-shadow: var(--shadow-elevated);
             }
             .service-card img {
                 width: 100%;
@@ -208,95 +261,185 @@
                 object-fit: cover;
             }
             .service-content {
-                padding: 30px;
+                padding: 35px;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
             }
             .service-content h3 {
-                font-size: 1.5rem;
-                margin-bottom: 10px;
                 color: var(--primary);
+                font-size: 1.6rem;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                margin-bottom: 8px;
             }
             .service-content h4 {
-                font-size: 1rem;
                 color: var(--accent);
-                margin-bottom: 15px;
+                font-size: 0.95rem;
                 font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-bottom: 20px;
             }
             .service-content p {
-                color: var(--text-muted);
+                color: var(--text-main);
                 font-size: 0.95rem;
+                font-weight: 300;
+                opacity: 0.8;
             }
 
-            /* Why Us - 扁平化图标设计 */
+            /* Why Us - SF 极简图标 */
+            .bg-light {
+                background-color: var(--bg-light);
+            }
             .features-grid {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                 gap: 30px;
+                max-width: 1200px;
+                margin-inline: auto;
             }
             .feature-box {
                 background: white;
-                padding: 40px;
-                transition: var(--transition);
-                border-bottom: 3px solid transparent;
+                padding: 45px;
+                border-radius: 16px;
+                transition: var(--transition-apple);
+                border: 1px solid rgba(0, 0, 0, 0.03);
             }
             .feature-box:hover {
-                background: #fff;
-                border-bottom-color: var(--accent);
-                box-shadow: var(--shadow-md);
+                box-shadow: var(--shadow-elevated);
+                transform: scale(1.02);
             }
             .feature-box i {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
                 color: var(--accent);
-                margin-bottom: 25px;
+                margin-bottom: 30px;
             }
             .feature-box h3 {
-                font-size: 1.25rem;
-                margin-bottom: 15px;
+                font-size: 1.4rem;
                 font-weight: 600;
+                margin-bottom: 15px;
+                letter-spacing: -0.01em;
             }
-            .feature-box .cn-desc,
             .feature-box p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+                font-weight: 300;
                 color: var(--text-muted);
             }
 
-            /* Warranty - 极简表格 */
-            .warranty-table-container {
-                max-width: 900px;
+            /* =========================================
+               Warranties Section - 全新排版
+               ========================================= */
+            .warranty-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 30px;
+                max-width: 1100px;
                 margin: 0 auto;
-                background: white;
-                box-shadow: var(--shadow-md);
-                border-radius: 8px;
-                overflow: hidden;
             }
-            .warranty-table {
-                width: 100%;
-                border-collapse: collapse;
+            .warranty-item {
+                background: var(--white);
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                border-radius: 16px;
+                padding: 40px;
+                position: relative;
+                transition: var(--transition-apple);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
             }
-            .warranty-table th {
-                background: var(--primary);
+            .warranty-item:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent);
+                box-shadow: var(--shadow-elevated);
+            }
+            .warranty-badge {
+                position: absolute;
+                top: -15px;
+                right: 20px;
+                background: var(--accent);
                 color: white;
-                padding: 25px;
-                text-align: left;
-                font-weight: 500;
+                padding: 5px 15px;
+                border-radius: 50px;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                box-shadow: 0 4px 10px rgba(197, 160, 89, 0.3);
             }
-            .warranty-table td {
-                padding: 20px 25px;
-                border-bottom: 1px solid #f0f0f0;
+            .warranty-icon {
+                width: 60px;
+                height: 60px;
+                background: rgba(27, 94, 32, 0.05);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 25px;
             }
-            .warranty-table tr:hover {
-                background: #fcfcfc;
+            .warranty-icon i {
+                font-size: 24px;
+                color: var(--primary);
             }
 
-            /* Gallery - 交错网格感 */
+            .warranty-type-title {
+                margin-bottom: 20px;
+            }
+            .warranty-type-title h3 {
+                font-size: 1.6rem;
+                color: var(--primary);
+            }
+            .warranty-type-title .cn-sub {
+                color: var(--accent);
+                font-weight: 600;
+            }
+
+            .warranty-body {
+                border-top: 1px solid #f0f0f0;
+                padding-top: 20px;
+                margin-bottom: 20px;
+            }
+            .coverage-box {
+                margin-bottom: 15px;
+            }
+            .label {
+                font-size: 12px;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                letter-spacing: 1px;
+                margin-bottom: 8px;
+                display: block;
+            }
+            .duration-tag {
+                display: inline-block;
+                padding: 8px 16px;
+                background: var(--primary);
+                color: white;
+                border-radius: 8px;
+                font-weight: 600;
+                margin-top: 10px;
+            }
+            .warranty-footer-notes {
+                text-align: center;
+                margin-top: 50px;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.02);
+                border-radius: 10px;
+                font-size: 0.85rem;
+                color: var(--text-muted);
+            }
+
+            /* Gallery - SF Grid 风格 */
             .gallery-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-                gap: 15px;
+                gap: 20px;
             }
             .gallery-item {
-                height: 300px;
+                height: 320px;
                 overflow: hidden;
-                position: relative;
+                border-radius: 12px;
             }
             .gallery-item img {
                 width: 100%;
@@ -308,64 +451,149 @@
                 transform: scale(1.08);
             }
 
-            /* Contact Section */
+            /* =========================================
+               Contact Section - 玻璃化高级定制
+               ========================================= */
             .contact-section {
                 background: var(--primary);
                 color: white;
-                padding: 80px 5%;
+                padding: var(--gap-lg) 8%;
+                text-align: center;
+            }
+            .contact-section h2 {
+                font-weight: 700;
+                letter-spacing: -0.03em;
+                margin-bottom: var(--gap-md);
             }
             .contact-info {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 60px;
-                margin-top: 50px;
+                gap: 50px;
+                max-width: 900px;
+                margin-inline: auto;
+            }
+            .contact-item {
+                background: rgba(255, 255, 255, 0.05); /* 极薄的玻璃底色 */
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 30px;
+                border-radius: 12px;
+                flex: 1 1 250px;
+                transition: var(--transition-apple);
+            }
+            .contact-item:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.1);
             }
             .contact-item i {
-                font-size: 1.8rem;
                 color: var(--accent);
-                margin-bottom: 15px;
+                font-size: 2rem;
+                margin-bottom: 20px;
                 display: block;
             }
             .contact-item p {
                 font-size: 1.1rem;
                 font-weight: 300;
+                opacity: 0.9;
             }
 
-            /* Footer */
+            /* =========================================
+               Footer - 彻底重构布局
+               ========================================= */
             .footer {
-                background: #111;
-                color: white;
-                padding: 60px 5% 30px;
-                text-align: center;
-            }
-            .footer .logo img {
-                height: 50px;
-                margin-bottom: 30px;
-                filter: brightness(0) invert(1);
-            }
-            .footer-text {
-                opacity: 0.6;
-                font-size: 0.9rem;
-                margin-top: 20px;
-                border-top: 1px solid #222;
-                padding-top: 20px;
+                background-color: var(
+                    --bg-light
+                ); /* 页脚采用浅灰背景线线，更柔和 */
+                color: var(--text-main);
+                padding: var(--gap-md) 8% 30px;
             }
 
-            /* Responsive */
+            .footer-content {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                margin-bottom: 40px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                padding-bottom: 40px;
+            }
+
+            /* Footer Logo与简介 */
+            .footer-about .logo-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .footer-about img {
+                height: 40px;
+            }
+            .footer-about .brand-name {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--primary);
+            }
+            .footer-about p {
+                font-size: 0.9rem;
+                font-weight: 300;
+                color: var(--text-muted);
+                line-height: 1.6;
+            }
+
+            /* Footer 链接 */
+            .footer-links h4 {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--text-muted);
+                margin-bottom: 20px;
+                font-weight: 600;
+            }
+            .footer-links ul {
+                list-style: none;
+            }
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            .footer-links a {
+                text-decoration: none;
+                color: var(--text-main);
+                font-size: 0.9rem;
+                font-weight: 300;
+                transition: var(--transition-apple);
+            }
+            .footer-links a:hover {
+                color: var(--accent);
+            }
+
+            /* Footer 版权与细则 */
+            .footer-bottom {
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--text-muted);
+                font-weight: 300;
+                line-height: 1.5;
+                padding-top: 10px;
+            }
+
+            /* =========================================
+               Responsive & Lang Toggling
+               ========================================= */
             @media (max-width: 992px) {
                 .nav-links {
                     display: none;
                 }
-                .section {
-                    padding: 60px 5%;
+                .navbar {
+                    padding: 0 20px;
                 }
-                .hero-content h1 {
-                    font-size: 2.5rem;
+                .section {
+                    padding: 60px 20px;
+                }
+                .footer {
+                    padding: 40px 20px 20px;
                 }
             }
 
-            /* Language Toggling */
             .cn {
                 display: none;
             }
@@ -378,31 +606,468 @@
             body.zh .cn-inline {
                 display: inline-block;
             }
+
+            /* 页面滚动到顶部的导航栏阴影 */
+            body.scrolled .navbar {
+                box-shadow: var(--shadow-sm);
+            }
+        </style>
+
+        <!-- ========================================
+             ULTIMATE ANIMATION SYSTEM
+             ======================================== -->
+        <style>
+            /* Hero Animated Gradient Background */
+            .hero {
+                position: relative;
+                overflow: hidden;
+            }
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background:
+                    radial-gradient(
+                        ellipse at 20% 80%,
+                        rgba(29, 61, 32, 0.4) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        ellipse at 80% 20%,
+                        rgba(210, 180, 140, 0.3) 0%,
+                        transparent 50%
+                    ),
+                    radial-gradient(
+                        ellipse at 50% 50%,
+                        rgba(29, 61, 32, 0.2) 0%,
+                        transparent 70%
+                    );
+                animation: heroGlow 8s ease-in-out infinite;
+                pointer-events: none;
+            }
+            @keyframes heroGlow {
+                0%,
+                100% {
+                    opacity: 0.8;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1.1);
+                }
+            }
+
+            /* Floating Particles */
+            .particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                pointer-events: none;
+            }
+            .particle {
+                position: absolute;
+                width: 4px;
+                height: 4px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 50%;
+                animation: float 15s infinite;
+            }
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+
+            /* Hero Text Glow */
+            .hero-content h1 {
+                text-shadow:
+                    0 0 20px rgba(255, 255, 255, 0.5),
+                    0 0 40px rgba(29, 61, 32, 0.5),
+                    0 0 60px rgba(29, 61, 32, 0.3);
+                animation: textGlow 3s ease-in-out infinite;
+            }
+            @keyframes textGlow {
+                0%,
+                100% {
+                    text-shadow:
+                        0 0 20px rgba(255, 255, 255, 0.5),
+                        0 0 40px rgba(29, 61, 32, 0.5);
+                }
+                50% {
+                    text-shadow:
+                        0 0 30px rgba(255, 255, 255, 0.8),
+                        0 0 60px rgba(29, 61, 32, 0.8),
+                        0 0 80px rgba(210, 180, 140, 0.4);
+                }
+            }
+
+            /* Ultimate Fade In Up */
+            .fade-in-up {
+                opacity: 0;
+                transform: translateY(60px) scale(0.95);
+                transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .fade-in-up.visible {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+            /* Card 3D Hover Effect */
+            .service-card,
+            .feature-box,
+            .warranty-item,
+            .gallery-item {
+                perspective: 1000px;
+                transform-style: preserve-3d;
+            }
+            .service-card:hover,
+            .feature-box:hover,
+            .warranty-item:hover {
+                transform: translateY(-20px) rotateX(5deg);
+                box-shadow:
+                    0 30px 60px rgba(0, 0, 0, 0.15),
+                    0 0 40px rgba(29, 61, 32, 0.2);
+            }
+
+            /* Shimmer Button Effect */
+            .btn-quote {
+                position: relative;
+                overflow: hidden;
+            }
+            .btn-quote::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent
+                );
+                animation: shimmer 3s infinite;
+            }
+            @keyframes shimmer {
+                0% {
+                    left: -100%;
+                }
+                100% {
+                    left: 100%;
+                }
+            }
+            .btn-quote:hover::before {
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.5),
+                    transparent
+                );
+            }
+
+            /* Pulsing Glow */
+            .pulse-glow {
+                animation: pulseGlow 2s ease-in-out infinite;
+            }
+            @keyframes pulseGlow {
+                0%,
+                100% {
+                    box-shadow: 0 0 20px rgba(29, 61, 32, 0.3);
+                }
+                50% {
+                    box-shadow:
+                        0 0 40px rgba(29, 61, 32, 0.6),
+                        0 0 60px rgba(210, 180, 140, 0.3);
+                }
+            }
+
+            /* Gradient Border Animation */
+            .service-card,
+            .feature-box,
+            .warranty-item {
+                position: relative;
+            }
+            .service-card::before,
+            .feature-box::before,
+            .warranty-item::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                border-radius: inherit;
+                padding: 2px;
+                background: linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--accent),
+                    var(--primary)
+                );
+                background-size: 200% 200%;
+                animation: gradientBorder 4s ease infinite;
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                opacity: 0;
+                transition: opacity 0.4s;
+            }
+            .service-card:hover::before,
+            .feature-box:hover::before,
+            .warranty-item:hover::before {
+                opacity: 1;
+            }
+            @keyframes gradientBorder {
+                0%,
+                100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+
+            /* Stagger Animation Delays */
+            .service-card:nth-child(1) {
+                transition-delay: 0s;
+            }
+            .service-card:nth-child(2) {
+                transition-delay: 0.1s;
+            }
+            .service-card:nth-child(3) {
+                transition-delay: 0.2s;
+            }
+            .service-card:nth-child(4) {
+                transition-delay: 0.3s;
+            }
+
+            .feature-box:nth-child(1) {
+                transition-delay: 0s;
+            }
+            .feature-box:nth-child(2) {
+                transition-delay: 0.1s;
+            }
+            .feature-box:nth-child(3) {
+                transition-delay: 0.2s;
+            }
+            .feature-box:nth-child(4) {
+                transition-delay: 0.3s;
+            }
+            .feature-box:nth-child(5) {
+                transition-delay: 0.4s;
+            }
+
+            /* Icon Spin on Hover */
+            .service-card:hover .service-icon i,
+            .feature-box:hover > i {
+                animation: iconSpin 0.6s ease;
+            }
+            @keyframes iconSpin {
+                0% {
+                    transform: rotate(0deg) scale(1);
+                }
+                50% {
+                    transform: rotate(180deg) scale(1.2);
+                }
+                100% {
+                    transform: rotate(360deg) scale(1);
+                }
+            }
+
+            /* Counter Animation */
+            .counter {
+                display: inline-block;
+            }
+
+            /* Gallery Zoom Magic */
+            .gallery-item {
+                overflow: hidden;
+            }
+            .gallery-item img {
+                transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.2) rotate(2deg);
+            }
+
+            /* Section Title Animation */
+            .section-title {
+                background: linear-gradient(
+                    135deg,
+                    var(--primary) 0%,
+                    var(--accent) 50%,
+                    var(--primary) 100%
+                );
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradientText 4s linear infinite;
+            }
+            @keyframes gradientText {
+                0% {
+                    background-position: 0% center;
+                }
+                100% {
+                    background-position: 200% center;
+                }
+            }
+
+            /* Logo Animation */
+            .logo-main {
+                background: linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--accent),
+                    var(--primary)
+                );
+                background-size: 200% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradientText 3s linear infinite;
+            }
+
+            /* Scroll Progress Bar */
+            .scroll-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--accent)
+                );
+                width: 0%;
+                z-index: 9999;
+                transition: width 0.1s;
+            }
+
+            /* Bounce In Animation */
+            @keyframes bounceIn {
+                0% {
+                    opacity: 0;
+                    transform: scale(0.3);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+                70% {
+                    transform: scale(0.9);
+                }
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            .bounce-in {
+                animation: bounceIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+
+            /* Blur In Animation */
+            @keyframes blurIn {
+                0% {
+                    opacity: 0;
+                    filter: blur(20px);
+                    transform: scale(1.2);
+                }
+                100% {
+                    opacity: 1;
+                    filter: blur(0);
+                    transform: scale(1);
+                }
+            }
+            .blur-in {
+                animation: blurIn 1s ease forwards;
+            }
+
+            /* Slide In From Sides */
+            @keyframes slideInLeft {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-100px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            @keyframes slideInRight {
+                0% {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                100% {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            .slide-left {
+                animation: slideInLeft 0.8s ease forwards;
+            }
+            .slide-right {
+                animation: slideInRight 0.8s ease forwards;
+            }
         </style>
     </head>
     <body>
-        <button class="lang-switch" onclick="toggleLang()">中文 / EN</button>
-
         <nav class="navbar">
             <div class="logo">
-                <img
-                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
-                    alt="FLYING LAP LTD."
-                />
+                <span class="logo-text">
+                    <span class="logo-main">FLYING LAP</span>
+                    <span class="logo-sub">LTD.</span>
+                </span>
             </div>
             <div class="nav-links">
-                <a href="#home" class="en">Home</a
-                ><a href="#home" class="cn">首页</a>
-                <a href="#services" class="en">Services</a
-                ><a href="#services" class="cn">服务范围</a>
-                <a href="#why-us" class="en">Why Us?</a
-                ><a href="#why-us" class="cn">核心优势</a>
-                <a href="#warranties" class="en">Warranties</a
-                ><a href="#warranties" class="cn">质量保证</a>
-                <a href="#gallery" class="en">Gallery</a
-                ><a href="#gallery" class="cn">工程案例</a>
-                <a href="#contact" class="btn-quote en">Free Estimate</a>
-                <a href="#contact" class="btn-quote cn">预约免费估价</a>
+                <a href="#home"
+                    ><span class="en">home</span><span class="cn">首页</span></a
+                >
+                <a href="#services"
+                    ><span class="en">services</span
+                    ><span class="cn">服务范围</span></a
+                >
+                <a href="#why-us"
+                    ><span class="en">why us?</span
+                    ><span class="cn">核心优势</span></a
+                >
+                <a href="#warranties"
+                    ><span class="en">warranties</span
+                    ><span class="cn">质量保证</span></a
+                >
+                <a href="#gallery"
+                    ><span class="en">gallery</span
+                    ><span class="cn">工程案例</span></a
+                >
+                <a href="#contact" class="btn-quote">
+                    <span class="en">Free Estimate</span
+                    ><span class="cn">预约免费估价</span>
+                </a>
+                <button class="lang-switch" onclick="toggleLang()">中文</button>
             </div>
         </nav>
 
@@ -417,29 +1082,48 @@
                 <p class="headline cn">
                     卡尔加里全方位外墙专家：立足阿省环境，追求极致工艺。
                 </p>
-                <a href="#contact" class="btn-quote en">Book a Free Estimate</a>
-                <a href="#contact" class="btn-quote cn">预约免费估价</a>
+                <a
+                    href="#contact"
+                    class="btn-quote"
+                    style="
+                        padding: 15px 35px;
+                        font-size: 1.1rem;
+                        border-radius: 50px;
+                    "
+                >
+                    <span class="en">Book a Free Estimate</span
+                    ><span class="cn">预约免费估价</span>
+                </a>
             </div>
         </section>
 
         <section class="section" id="services">
-            <h2 class="section-title en">Our Services</h2>
-            <h2 class="section-title cn">服务范围</h2>
-            <p class="section-subtitle en">
-                Professional exterior solutions for Calgary homes
-            </p>
-            <p class="section-subtitle cn">
-                专业外墙解决方案，为卡尔加里住宅保驾护航
+            <h2 class="section-title">
+                <span class="en">Our Services</span
+                ><span class="cn">服务范围</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="en"
+                    >Professional exterior solutions for Calgary homes</span
+                >
+                <span class="cn">专业外墙解决方案，为卡尔加里住宅保驾护航</span>
             </p>
 
             <div class="services-grid">
                 <div class="service-card">
                     <img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing" />
                     <div class="service-content">
-                        <h3 class="en">Roofing Systems</h3>
-                        <h3 class="cn">屋顶系统</h3>
-                        <h4 class="en">Impact-Resistant Solutions</h4>
-                        <h4 class="cn">抗冲击防护方案</h4>
+                        <div>
+                            <h3>
+                                <span class="en">Roofing Systems</span
+                                ><span class="cn">屋顶系统</span>
+                            </h3>
+                            <h4>
+                                <span class="en"
+                                    >Impact-Resistant Solutions</span
+                                ><span class="cn">抗冲击防护方案</span>
+                            </h4>
+                        </div>
                         <p class="en">
                             Professional installation and repair using premium
                             Class 3 or Class 4 impact-resistant shingles. Built
@@ -458,10 +1142,16 @@
                         alt="Siding"
                     />
                     <div class="service-content">
-                        <h3 class="en">Siding Solutions</h3>
-                        <h3 class="cn">外墙方案</h3>
-                        <h4 class="en">Enhance Curb Appeal</h4>
-                        <h4 class="cn">提升建筑美感</h4>
+                        <div>
+                            <h3>
+                                <span class="en">Siding Solutions</span
+                                ><span class="cn">外墙方案</span>
+                            </h3>
+                            <h4>
+                                <span class="en">Enhance Curb Appeal</span
+                                ><span class="cn">提升建筑美感</span>
+                            </h4>
+                        </div>
                         <p class="en">
                             Durable, high-quality siding installations and
                             repairs to enhance curb appeal and insulation with
@@ -479,10 +1169,16 @@
                         alt="Gutters"
                     />
                     <div class="service-content">
-                        <h3 class="en">Gutter & Guard</h3>
-                        <h3 class="cn">排水及防护系统</h3>
-                        <h4 class="en">Foundation Protection</h4>
-                        <h4 class="cn">地基全效防护</h4>
+                        <div>
+                            <h3>
+                                <span class="en">Gutter & Guard</span
+                                ><span class="cn">排水及防护系统</span>
+                            </h3>
+                            <h4>
+                                <span class="en">Foundation Protection</span
+                                ><span class="cn">地基全效防护</span>
+                            </h4>
+                        </div>
                         <p class="en">
                             On-site custom seamless gutters and professional
                             protection systems to protect your foundation from
@@ -500,10 +1196,16 @@
                         alt="Windows"
                     />
                     <div class="service-content">
-                        <h3 class="en">Windows & Doors</h3>
-                        <h3 class="cn">门窗工程</h3>
-                        <h4 class="en">Energy Efficiency</h4>
-                        <h4 class="cn">高效节能科技</h4>
+                        <div>
+                            <h3>
+                                <span class="en">Windows & Doors</span
+                                ><span class="cn">门窗工程</span>
+                            </h3>
+                            <h4>
+                                <span class="en">Energy Efficiency</span
+                                ><span class="cn">高效节能科技</span>
+                            </h4>
+                        </div>
                         <p class="en">
                             Energy-efficient installations tailored for
                             Calgary's extreme climate, ensuring maximum comfort
@@ -518,13 +1220,17 @@
         </section>
 
         <section class="section bg-light" id="why-us">
-            <h2 class="section-title en">Why Choose Us?</h2>
-            <h2 class="section-title cn">核心优势</h2>
+            <h2 class="section-title">
+                <span class="en">Why Choose Us?</span
+                ><span class="cn">核心优势</span>
+            </h2>
             <div class="features-grid">
                 <div class="feature-box">
                     <i class="fa-solid fa-tags"></i>
-                    <h3 class="en">Unbeatable Value</h3>
-                    <h3 class="cn">无与伦比的价格优势</h3>
+                    <h3>
+                        <span class="en">Unbeatable Value</span
+                        ><span class="cn">无与伦比的价格优势</span>
+                    </h3>
                     <p class="en">
                         We offer top-tier materials and craftsmanship at
                         industry-leading prices. Maximum value for your
@@ -536,8 +1242,10 @@
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-shield-heart"></i>
-                    <h3 class="en">Peace of Mind</h3>
-                    <h3 class="cn">安全保障</h3>
+                    <h3>
+                        <span class="en">Peace of Mind</span
+                        ><span class="cn">安全保障</span>
+                    </h3>
                     <p class="en">
                         Fully licensed with $5 Million CGL Insurance and WCB
                         coverage. We protect your property and our team.
@@ -548,8 +1256,10 @@
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-bolt"></i>
-                    <h3 class="en">Rapid Response</h3>
-                    <h3 class="cn">极速响应</h3>
+                    <h3>
+                        <span class="en">Rapid Response</span
+                        ><span class="cn">极速响应</span>
+                    </h3>
                     <p class="en">
                         True to our name "Flying Lap", we provide fast estimates
                         and even faster service when you need us most.
@@ -561,8 +1271,10 @@
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-file-shield"></i>
-                    <h3 class="en">Insurance Claims</h3>
-                    <h3 class="cn">协助保险理赔</h3>
+                    <h3>
+                        <span class="en">Insurance Claims</span
+                        ><span class="cn">协助保险理赔</span>
+                    </h3>
                     <p class="en">
                         Dealing with hail damage? We provide professional
                         inspections and guide you through the claim process.
@@ -571,10 +1283,12 @@
                         遭受冰雹灾害？我们提供专业受损检查，协助您完成理赔流程，确保获得应有保障。
                     </p>
                 </div>
-                <div class="feature-box">
+                <div class="feature-box feature-box-main">
                     <i class="fa-solid fa-handshake"></i>
-                    <h3 class="en">After-Sales</h3>
-                    <h3 class="cn">负责任的售后</h3>
+                    <h3>
+                        <span class="en">After-Sales</span
+                        ><span class="cn">负责任的售后</span>
+                    </h3>
                     <p class="en">
                         Our job isn't done until you are 100% satisfied. We
                         stand by our work long after the project is complete.
@@ -587,69 +1301,113 @@
         </section>
 
         <section class="section" id="warranties">
-            <h2 class="section-title en">Warranties</h2>
-            <h2 class="section-title cn">质量保证</h2>
-            <div class="warranty-table-container">
-                <table class="warranty-table">
-                    <thead>
-                        <tr>
-                            <th class="en">Warranty Type</th>
-                            <th class="cn">质保类型</th>
-                            <th class="en">Coverage</th>
-                            <th class="cn">覆盖范围</th>
-                            <th class="en">Duration</th>
-                            <th class="cn">时长</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <strong class="en">Material</strong
-                                ><strong class="cn">材料质保*</strong>
-                            </td>
-                            <td class="en">Impact-Resistant Shingles, etc.</td>
-                            <td class="cn">抗冲击瓦片等优质材料</td>
-                            <td class="en">10-20 Years / Lifetime</td>
-                            <td class="cn">10-20年或有限终身</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong class="en">Workmanship</strong
-                                ><strong class="cn">施工质保**</strong>
-                            </td>
-                            <td class="en">Roofing / Windows Installation</td>
-                            <td class="cn">屋顶/门窗 安装</td>
-                            <td class="en">5 Years</td>
-                            <td class="cn">5年</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="en">Gutter / Siding Installation</td>
-                            <td class="cn">雨水槽/外墙 安装</td>
-                            <td class="en">2 Years</td>
-                            <td class="cn">2年</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h2 class="section-title">
+                <span class="en">Warranties</span
+                ><span class="cn">质量保证</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="en"
+                    >Rock-solid guarantee for complete peace of mind</span
+                >
+                <span class="cn">每一份工程，都承载我们坚实的承诺</span>
+            </p>
+
+            <div class="warranty-grid">
+                <div class="warranty-item">
+                    <div class="warranty-badge">PREMIUM</div>
+                    <div class="warranty-icon">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div class="warranty-type-title">
+                        <h3 class="en">Material</h3>
+                        <h3 class="cn">材料质保 *</h3>
+                    </div>
+                    <div class="warranty-body">
+                        <div class="coverage-box">
+                            <span class="label">Coverage / 覆盖范围</span>
+                            <p class="en">
+                                Impact-Resistant Shingles, Siding & Gutter
+                                Materials
+                            </p>
+                            <p class="cn">抗冲击瓦片、外墙及雨水槽型材</p>
+                        </div>
+                        <div class="duration-box">
+                            <span class="label">Duration / 时长</span>
+                            <div class="duration-tag">
+                                <span class="en">10-20 Years / Lifetime</span>
+                                <span class="cn">10-20年或有限终身</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty-item">
+                    <div class="warranty-badge">EXPERT</div>
+                    <div class="warranty-icon">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                    </div>
+                    <div class="warranty-type-title">
+                        <h3 class="en">Workmanship</h3>
+                        <h3 class="cn">施工质保 **</h3>
+                    </div>
+                    <div class="warranty-body">
+                        <div class="coverage-box">
+                            <span class="label">Coverage / 覆盖范围</span>
+                            <p class="en">Roofing & Windows Installation</p>
+                            <p class="cn">屋顶及门窗安装工程</p>
+                        </div>
+                        <div class="duration-box">
+                            <span class="label">Duration / 时长</span>
+                            <div class="duration-tag">
+                                <span class="en">5 Years</span>
+                                <span class="cn">5年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warranty-item">
+                    <div class="warranty-badge">GUARANTEED</div>
+                    <div class="warranty-icon">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div class="warranty-type-title">
+                        <h3 class="en">Workmanship</h3>
+                        <h3 class="cn">施工质保 **</h3>
+                    </div>
+                    <div class="warranty-body">
+                        <div class="coverage-box">
+                            <span class="label">Coverage / 覆盖范围</span>
+                            <p class="en">Gutter & Siding Installation</p>
+                            <p class="cn">雨水槽及外墙安装工程</p>
+                        </div>
+                        <div class="duration-box">
+                            <span class="label">Duration / 时长</span>
+                            <div class="duration-tag">
+                                <span class="en">2 Years</span>
+                                <span class="cn">2年</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p
-                class="warranty-note en"
-                style="text-align: center; margin-top: 30px; opacity: 0.6"
-            >
-                * Material backed by manufacturer. ** Workmanship backed by
-                FLYING LAP LTD.
-            </p>
-            <p
-                class="warranty-note cn"
-                style="text-align: center; margin-top: 30px; opacity: 0.6"
-            >
-                * 材料质保由制造商提供。** 施工质保由 FLYING LAP LTD. 承担。
-            </p>
+
+            <div class="warranty-footer-notes">
+                <p class="en">
+                    * Material backed by manufacturer. ** Workmanship backed by
+                    FLYING LAP LTD.
+                </p>
+                <p class="cn">
+                    * 材料质保由制造商提供。** 施工质保由 FLYING LAP LTD. 承担。
+                </p>
+            </div>
         </section>
 
         <section class="section bg-light" id="gallery">
-            <h2 class="section-title en">Recent Projects</h2>
-            <h2 class="section-title cn">工程案例</h2>
+            <h2 class="section-title">
+                <span class="en">Recent Projects</span
+                ><span class="cn">工程案例</span>
+            </h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
                     <img
@@ -691,11 +1449,9 @@
         </section>
 
         <section class="section contact-section" id="contact">
-            <h2 class="section-title en" style="color: white; border: none">
-                Get in Touch
-            </h2>
-            <h2 class="section-title cn" style="color: white; border: none">
-                立即联系我们
+            <h2 class="section-title" style="color: white">
+                <span class="en">Contact Us Today</span
+                ><span class="cn">立即联系我们</span>
             </h2>
             <div class="contact-info">
                 <div class="contact-item">
@@ -708,47 +1464,311 @@
                 </div>
                 <div class="contact-item">
                     <i class="fa-solid fa-location-dot"></i>
-                    <p>12 Panora Way NW, Calgary</p>
+                    <p>12 Panora Way NW, Calgary T3K 0R3</p>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
-            <div class="logo">
-                <img
-                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
-                    alt="FLYING LAP LTD."
-                />
+            <div class="footer-content">
+                <div class="footer-about footer-links">
+                    <div class="logo-wrapper">
+                        <img
+                            src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                            alt="Flying Lap Ltd. Logo"
+                        />
+                        <span class="brand-name">FLYING LAP LTD.</span>
+                    </div>
+                    <p class="en">
+                        Calgary's trusted residential and commercial exterior
+                        specialists. Precision in Gutters, Siding, and Roofing.
+                    </p>
+                    <p class="cn">
+                        卡尔加里备受信赖的住宅和商业外墙专家。精准完成排水管、外墙和屋顶工程。
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Navigate</span
+                        ><span class="cn">快速链接</span>
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="#services"
+                                ><span class="en">services</span
+                                ><span class="cn">服务范围</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#warranties"
+                                ><span class="en">warranties</span
+                                ><span class="cn">质量保证</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#gallery"
+                                ><span class="en">gallery</span
+                                ><span class="cn">工程案例</span></a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Contact</span
+                        ><span class="cn">联系我们</span>
+                    </h4>
+                    <ul>
+                        <li><a href="tel:8259862614">tel. 825.986.2614</a></li>
+                        <li>
+                            <a href="mailto:flp.pcen@gmail.com"
+                                >flp.pcen@gmail.com</a
+                            >
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p style="font-weight: 600; letter-spacing: 2px">FLYING LAP LTD.</p>
-            <p class="en">Gutter · Siding · Roofing · Exterior Specialists</p>
-            <p class="cn">雨水槽 · 外墙 · 屋顶 · 专业外墙工程</p>
-            <div class="footer-text">
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FLYING LAP LTD. All Rights Reserved.</p>
                 <p>
-                    &copy; 2026 FLYING LAP LTD. All Rights Reserved.
-                    Professional Home Services in Calgary.
+                    Professional exterior home services in Calgary, Alberta,
+                    Canada.
                 </p>
             </div>
         </footer>
 
         <script>
+            // ========================================
+            // ULTIMATE ANIMATION SYSTEM
+            // ========================================
+
+            // Create floating particles
+            function createParticles() {
+                const hero = document.querySelector(".hero");
+                if (!hero) return;
+
+                const particlesContainer = document.createElement("div");
+                particlesContainer.className = "particles";
+                hero.appendChild(particlesContainer);
+
+                for (let i = 0; i < 30; i++) {
+                    const particle = document.createElement("div");
+                    particle.className = "particle";
+                    particle.style.left = Math.random() * 100 + "%";
+                    particle.style.animationDelay = Math.random() * 15 + "s";
+                    particle.style.animationDuration =
+                        15 + Math.random() * 10 + "s";
+                    particle.style.width = 2 + Math.random() * 4 + "px";
+                    particle.style.height = particle.style.width;
+                    particlesContainer.appendChild(particle);
+                }
+            }
+            createParticles();
+
+            // 🎲 隨機圖片系統
+            function randomizeImages() {
+                // 獲取所有圖片
+                const roofImages = [
+                    'Pic%20of%20website/Roof%20B4.JPG',
+                    'Pic%20of%20website/Roof%20B4_1.JPG',
+                    'Pic%20of%20website/Roof%20B4_2.JPG',
+                    'Pic%20of%20website/Roof%20B4_3.JPG',
+                    'Pic%20of%20website/Roof%20after.JPG',
+                    'Pic%20of%20website/Roof%20after_1.JPG',
+                    'Pic%20of%20website/Roof%20after_2.JPG',
+                    'Pic%20of%20website/Roof%20after_3.JPG',
+                    'Pic%20of%20website/roof%20b4_1.JPG',
+                    'Pic%20of%20website/roof%20b4_2.JPG',
+                    'Pic%20of%20website/roof%20after_1.JPG'
+                ];
+                const gutterImages = [
+                    'Pic%20of%20website/gutter%20b4_1.jpg',
+                    'Pic%20of%20website/gutter%20b4_2.jpg',
+                    'Pic%20of%20website/gutter%20b4_2%20(2).jpg',
+                    'Pic%20of%20website/gutter%20after_1.jpg',
+                    'Pic%20of%20website/gutter%20after_2.jpg'
+                ];
+                const sidingImages = [
+                    'Pic%20of%20website/siding%20b4_1.jpg',
+                    'Pic%20of%20website/siding%20b4_1%20(2).jpg',
+                    'Pic%20of%20website/siding%20b4_2.jpg'
+                ];
+                const homeImages = [
+                    'Pic%20of%20website/Pic_Home.png',
+                    'Pic%20of%20website/front.jpg',
+                    'Pic%20of%20website/front%20(2).jpg',
+                    'Pic%20of%20website/front%20(3).jpg',
+                    'Pic%20of%20website/front%20.png'
+                ];
+
+                function getRandom(arr) {
+                    return arr[Math.floor(Math.random() * arr.length)];
+                }
+
+                // 服務卡片圖片
+                document.querySelectorAll('.service-card img').forEach((img, i) => {
+                    const imgs = [roofImages, gutterImages, sidingImages, roofImages];
+                    img.src = getRandom(imgs[i] || roofImages);
+                });
+
+                // Hero 背景圖片
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    const bgImg = getRandom(homeImages);
+                    hero.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.5)), url("${bgImg}")`;
+                }
+
+                // Gallery 圖片 - 隨機打散
+                const galleryImages = [...roofImages, ...gutterImages, ...sidingImages].sort(() => Math.random() - 0.5);
+                document.querySelectorAll('.gallery-item img').forEach((img, i) => {
+                    img.src = galleryImages[i % galleryImages.length];
+                });
+            }
+            randomizeImages();
+
+            // Scroll Progress Bar
+            function createProgressBar() {
+                const progress = document.createElement("div");
+                progress.className = "scroll-progress";
+                document.body.appendChild(progress);
+
+                window.addEventListener("scroll", () => {
+                    const scrollTop = window.scrollY;
+                    const docHeight =
+                        document.documentElement.scrollHeight -
+                        window.innerHeight;
+                    const progressPercent = (scrollTop / docHeight) * 100;
+                    progress.style.width = progressPercent + "%";
+                });
+            }
+            createProgressBar();
+
+            // Ultimate Scroll Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px",
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Add staggered delay based on siblings
+                        const siblings =
+                            entry.target.parentElement.querySelectorAll(
+                                ":scope > *",
+                            );
+                        let delay = 0;
+                        for (let i = 0; i < siblings.length; i++) {
+                            if (siblings[i] === entry.target) break;
+                            delay += 0.1;
+                        }
+
+                        setTimeout(() => {
+                            entry.target.classList.add("visible");
+                        }, delay * 1000);
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animations to elements
+            document
+                .querySelectorAll(
+                    ".service-card, .feature-box, .warranty-item, .gallery-item",
+                )
+                .forEach((el) => {
+                    el.classList.add("fade-in-up");
+                    observer.observe(el);
+                });
+
+            // Animate section titles
+            document.querySelectorAll(".section-title").forEach((el) => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px)";
+                el.style.transition = "all 0.8s cubic-bezier(0.16, 1, 0.3, 1)";
+
+                const titleObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                setTimeout(() => {
+                                    el.style.opacity = "1";
+                                    el.style.transform = "translateY(0)";
+                                }, 300);
+                            }
+                        });
+                    },
+                    { threshold: 0.5 },
+                );
+
+                titleObserver.observe(el);
+            });
+
+            // Counter animation for stats
+            function animateCounters() {
+                const counters = document.querySelectorAll(".counter");
+                counters.forEach((counter) => {
+                    const target = parseInt(
+                        counter.getAttribute("data-target"),
+                    );
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += step;
+                        if (current >= target) {
+                            counter.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }, 16);
+                });
+            }
+
+            // Parallax effect on hero
+            window.addEventListener("scroll", () => {
+                const hero = document.querySelector(".hero");
+                if (hero) {
+                    const scrolled = window.scrollY;
+                    hero.style.backgroundPositionY = scrolled * 0.5 + "px";
+                }
+            });
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(
+                        this.getAttribute("href"),
+                    );
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    }
+                });
+            });
+
+            // Language toggle
             function toggleLang() {
                 document.body.classList.toggle("zh");
                 var btn = document.querySelector(".lang-switch");
                 btn.textContent = document.body.classList.contains("zh")
-                    ? "EN / 中文"
-                    : "中文 / EN";
+                    ? "EN"
+                    : "中文";
             }
 
             // Navbar scroll effect
             window.addEventListener("scroll", function () {
-                const nav = document.querySelector(".navbar");
-                if (window.scrollY > 50) {
-                    nav.style.padding = "5px 5%";
-                    nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+                if (window.scrollY > 20) {
+                    document.body.classList.add("scrolled");
                 } else {
-                    nav.style.padding = "10px 5%";
-                    nav.style.boxShadow = "none";
+                    document.body.classList.remove("scrolled");
                 }
             });
         </script>
