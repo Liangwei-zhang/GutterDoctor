@@ -1,434 +1,756 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root {
-      --primary: #2E7D32;
-      --primary-dark: #1B5E20;
-      --primary-light: #4CAF50;
-      --accent: #FF6F00;
-      --text-dark: #1a1a1a;
-      --text-light: #666;
-      --white: #ffffff;
-      --bg-light: #f5f5f5;
-      --shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', 'Noto Sans SC', sans-serif; color: var(--text-dark); line-height: 1.6; }
-    .lang-switch {
-      position: fixed; top: 10px; right: 20px; z-index: 1001;
-      background: var(--primary); color: white; border: none;
-      padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 14px;
-    }
-    
-    /* Navigation */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-      padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .logo img { height: 70px; width: auto; max-width: 100%; }
-    .nav-links { display: flex; gap: 30px; align-items: center; }
-    .nav-links a {
-      text-decoration: none; color: var(--text-dark); font-weight: 500; font-size: 15px;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-    .btn-quote {
-      background: var(--primary); color: white; padding: 12px 24px;
-      border-radius: 25px; text-decoration: none; font-weight: 600;
-      transition: all 0.3s;
-    }
-    .btn-quote:hover { background: var(--primary-dark); transform: translateY(-2px); }
-    
-    /* Hero Section */
-    .hero {
-      height: 100vh; min-height: 700px;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('Pic%20of%20website/Pic_Home.png');
-      background-size: cover; background-position: center;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      color: white; padding: 0 20px;
-    }
-    .hero-content h1 {
-      font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2;
-    }
-    .hero-content .slogan {
-      font-size: 1.5rem; font-weight: 500; margin-bottom: 30px; opacity: 0.95;
-    }
-    .hero-content .headline {
-      font-size: 1.3rem; margin-bottom: 40px; opacity: 0.9; max-width: 700px;
-    }
-    .hero .btn-quote {
-      font-size: 1.1rem; padding: 15px 35px;
-    }
-    
-    /* Section Styles */
-    .section { padding: 80px 5%; }
-    .section-title {
-      text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 15px;
-    }
-    .section-subtitle {
-      text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 50px;
-    }
-    .section-title-cn {
-      text-align: center; font-size: 1.4rem; color: var(--primary); margin-bottom: 40px;
-    }
-    
-    /* Services */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
-    }
-    .service-card {
-      background: white; border-radius: 16px; overflow: hidden;
-      box-shadow: var(--shadow); transition: transform 0.3s;
-    }
-    .service-card:hover { transform: translateY(-10px); }
-    .service-card img {
-      width: 100%; height: 220px; object-fit: cover;
-    }
-    .service-content { padding: 25px; }
-    .service-content h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--primary); }
-    .service-content h4 { font-size: 1.1rem; margin-bottom: 15px; color: var(--text-light); font-weight: 500; }
-    .service-content p { color: var(--text-light); font-size: 0.95rem; }
-    
-    /* Why Us */
-    .bg-light { background: var(--bg-light); }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
-    }
-    .feature-box {
-      background: white; padding: 35px; border-radius: 16px; box-shadow: var(--shadow);
-    }
-    .feature-box i {
-      font-size: 2.5rem; color: var(--primary); margin-bottom: 20px;
-    }
-    .feature-box h3 { font-size: 1.3rem; margin-bottom: 8px; }
-    .feature-box .cn { color: var(--primary); font-size: 1rem; margin-bottom: 15px; }
-    .feature-box p { color: var(--text-light); font-size: 0.95rem; }
-    .feature-box .cn-desc { color: var(--text-light); font-size: 0.9rem; margin-top: 10px; }
-    
-    /* Warranties */
-    .warranty-table {
-      max-width: 800px; margin: 0 auto; background: white;
-      border-radius: 16px; overflow: hidden; box-shadow: var(--shadow);
-    }
-    .warranty-table table { width: 100%; border-collapse: collapse; }
-    .warranty-table th, .warranty-table td {
-      padding: 20px; text-align: left; border-bottom: 1px solid #eee;
-    }
-    .warranty-table th { background: var(--primary); color: white; font-weight: 600; }
-    .warranty-table tr:last-child td { border-bottom: none; }
-    .warranty-note {
-      text-align: center; color: var(--text-light); font-size: 0.85rem;
-      margin-top: 20px; font-style: italic;
-    }
-    
-    /* Gallery */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
-    }
-    .gallery-item {
-      border-radius: 12px; overflow: hidden; position: relative;
-      height: 250px;
-    }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;
-    }
-    .gallery-item:hover img { transform: scale(1.1); }
-    
-    /* Contact */
-    .contact-section { background: var(--primary); color: white; text-align: center; }
-    .contact-section .section-title { color: white; }
-    .contact-info {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
-      margin-top: 40px;
-    }
-    .contact-item { text-align: center; }
-    .contact-item i { font-size: 2rem; margin-bottom: 15px; }
-    .contact-item p { font-size: 1.1rem; }
-    
-    /* Footer */
-    .footer { background: #1a1a1a; color: white; padding: 40px 5%; text-align: center; }
-    .footer .logo img { height: 50px; margin-bottom: 20px; }
-    .footer p { opacity: 0.8; margin: 5px 0; }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hero-content h1 { font-size: 2rem; }
-      .hero-content .slogan { font-size: 1.1rem; }
-      .hero-content .headline { font-size: 1rem; }
-      .section { padding: 60px 5%; }
-      .section-title { font-size: 1.8rem; }
-    }
-    
-    /* Hide Chinese by default */
-    .cn { display: none; }
-    body.zh .en { display: none; }
-    body.zh .cn { display: block; }
-    body.zh .cn-inline { display: inline; }
-  </style>
-</head>
-<body>
-  <button class="langtoggleLang()">中文</button>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <style>
+            :root {
+                --primary: #1b5e20; /* 更深沉的高级绿 */
+                --primary-light: #43a047;
+                --accent: #c5a059; /* 高级香槟金 */
+                --text-dark: #2c3e50;
+                --text-muted: #546e7a;
+                --white: #ffffff;
+                --bg-light: #f8f9fa;
+                --glass: rgba(255, 255, 255, 0.9);
+                --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+                --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+                --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
 
--switch" onclick="  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">
-      <img src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png" alt="FLYING LAP LTD.">
-    </div>
-    <div class="nav-links">
-      <a href="#home" class="en">Home</a><a href="#home" class="cn">首页</a>
-      <a href="#services" class="en">Services</a><a href="#services" class="cn">服务范围</a>
-      <a href="#why-us" class="en">Why Us?</a><a href="#why-us" class="cn">核心优势</a>
-      <a href="#warranties" class="en">Warranties</a><a href="#warranties" class="cn">质量保证</a>
-      <a href="#gallery" class="en">Gallery</a><a href="#gallery" class="cn">工程案例</a>
-      <a href="#contact" class="btn-quote en">Book a Free Estimate</a>
-      <a href="#contact" class="btn-quote cn">预约免费估价</a>
-    </div>
-  </nav>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 class="slogan en">Driving Excellence for Your Home's Exterior.</h1>
-      <h1 class="slogan cn">追求极致，守护您家。</h1>
-      <p class="headline en">Calgary's Premier Exterior Specialists: Built for Alberta, Driven by Precision.</p>
-      <p class="headline cn">卡尔加里全方位外墙专家：立足阿省环境，追求极致工艺。</p>
-      <a href="#contact" class="btn-quote en">Book a Free Estimate</a>
-      <a href="#contact" class="btn-quote cn">预约免费估价</a>
-    </div>
-  </section>
+            html {
+                scroll-behavior: smooth;
+            }
 
-  <!-- Services -->
-  <section class="section" id="services">
-    <h2 class="section-title en">Our Services</h2>
-    <h2 class="section-title cn">服务范围</h2>
-    <p class="section-subtitle en">Professional exterior solutions for Calgary homes</p>
-    <p class="section-subtitle cn">专业外墙解决方案，为卡尔加里住宅保驾护航</p>
-    
-    <div class="services-grid">
-      <div class="service-card">
-        <img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing">
-        <div class="service-content">
-          <h3 class="en">Roofing Systems</h3>
-          <h3 class="cn">屋顶系统</h3>
-          <h4 class="en">Professional installation and repair using premium Class 3 or Class 4 impact-resistant shingles.</h4>
-          <h4 class="cn">专业安装与维修，采用优质 Class 3 或 Class 4 等级抗冲击瓦片。</h4>
-          <p class="en">Expert roofing solutions built for Alberta's harsh climate.</p>
-          <p class="cn">专为阿省恶劣气候设计的专业屋顶解决方案。</p>
-        </div>
-      </div>
-      
-      <div class="service-card">
-        <img src="Pic%20of%20website/Gallery/2/siding%20b4_1.jpg" alt="Siding">
-        <div class="service-content">
-          <h3 class="en">Siding Solutions</h3>
-          <h3 class="cn">外墙方案</h3>
-          <h4 class="en">Durable, high-quality siding installations and repairs to enhance curb appeal and insulation.</h4>
-          <h4 class="cn">高品质外墙安装与维修，提升房屋美感与隔热性能。</h4>
-          <p class="en">Transform your home with premium siding materials.</p>
-          <p class="cn">用优质外墙材料改变您的家。</p>
-        </div>
-      </div>
-      
-      <div class="service-card">
-        <img src="Pic%20of%20website/Gallery/1/Gutter_B4.jpg" alt="Gutters">
-        <div class="service-content">
-          <h3 class="en">Gutter & Gutter Guard</h3>
-          <h3 class="cn">排水及防护系统</h3>
-          <h4 class="en">On-site custom seamless gutters and professional protection systems to protect your foundation.</h4>
-          <h4 class="cn">现场定制无缝雨水槽及专业防落叶系统，守护房屋地基。</h4>
-          <p class="en">Protect your foundation from water damage year-round.</p>
-          <p class="cn">全年守护您的房屋地基，防水害。</p>
-        </div>
-      </div>
-      
-      <div class="service-card">
-        <img src="Pic%20of%20website/Gallery/1/front.jpg" alt="Windows">
-        <div class="service-content">
-          <h3 class="en">Windows & Doors</h3>
-          <h3 class="cn">门窗工程</h3>
-          <h4 class="en">Energy-efficient installations tailored for Calgary's extreme climate.</h4>
-          <h4 class="cn">针对卡尔加里极端气候设计的节能门窗安装。</h4>
-          <p class="en">Energy-efficient windows and doors for maximum comfort.</p>
-          <p class="cn">节能门窗，极致舒适。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+            body {
+                font-family: "Poppins", "Noto Sans SC", sans-serif;
+                color: var(--text-dark);
+                line-height: 1.7;
+                background-color: var(--white);
+            }
 
-  <!-- Why Us -->
-  <section class="section bg-light" id="why-us">
-    <h2 class="section-title en">Why Choose Us?</h2>
-    <h2 class="section-title cn">核心优势</h2>
-    
-    <div class="features-grid">
-      <div class="feature-box">
-        <i class="fa-solid fa-tags"></i>
-        <h3 class="en">Unbeatable Value</h3>
-        <h3 class="cn-inline">无与伦比的价格优势</h3>
-        <p class="en">We offer top-tier materials and craftsmanship at prices that lead the industry. Get the best value for your investment without compromising on quality.</p>
-        <p class="cn-desc cn">在确保顶级材料与工艺的同时，我们提供极具竞争力的价格。让您的每一分投入都物超所值。</p>
-      </div>
-      
-      <div class="feature-box">
-        <i class="fa-solid fa-shield-heart"></i>
-        <h3 class="en">Peace of Mind</h3>
-        <h3 class="cn-inline">安全保障</h3>
-        <p class="en">Fully licensed with $5 Million CGL Insurance and WCB coverage. We protect your property and our team.</p>
-        <p class="cn-desc cn">500万加币商业责任险及WCB认证，全方位守护您的财产安全与施工安全。</p>
-      </div>
-      
-      <div class="feature-box">
-        <i class="fa-solid fa-bolt"></i>
-        <h3 class="en">Rapid Response</h3>
-        <h3 class="cn-inline">极速响应</h3>
-        <p class="en">True to our name, we provide fast estimates and even faster service when you need us most.</p>
-        <p class="cn-desc cn">诚如公司名"Flying Lap"，我们提供极速报价与施工，在您最需要的时候绝不拖延。</p>
-      </div>
-      
-      <div class="feature-box">
-        <i class="fa-solid fa-file-shield"></i>
-        <h3 class="en">Insurance Claims Support</h3>
-        <h3 class="cn-inline">协助保险理赔</h3>
-        <p class="en">Dealing with hail damage? We provide professional inspections and guide you through the complex insurance claim process to ensure you get the coverage you deserve.</p>
-        <p class="cn-desc cn">遭受冰雹灾害？我们提供专业受损检查，并协助您完成复杂的保险理赔流程，确保您获得应有的保障。</p>
-      </div>
-      
-      <div class="feature-box">
-        <i class="fa-solid fa-handshake"></i>
-        <h3 class="en">Responsible After-Sales</h3>
-        <h3 class="cn-inline">负责任的售后</h3>
-        <p class="en">Our job isn't done until you are 100% satisfied. We stand by our work long after the project is complete.</p>
-        <p class="cn-desc cn">服务不因完工而停止。我们承诺负责到底的售后保障，让您无后顾之忧。</p>
-      </div>
-    </div>
-  </section>
+            /* 语言切换按钮 - 悬浮胶囊样式 */
+            .lang-switch {
+                position: fixed;
+                top: 90px;
+                right: 20px;
+                z-index: 1001;
+                background: var(--primary);
+                color: white;
+                border: none;
+                padding: 10px 22px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-weight: 600;
+                font-size: 13px;
+                letter-spacing: 1px;
+                box-shadow: var(--shadow-md);
+                transition: var(--transition);
+            }
+            .lang-switch:hover {
+                transform: scale(1.05);
+                background: var(--accent);
+            }
 
-  <!-- Warranties -->
-  <section class="section" id="warranties">
-    <h2 class="section-title en">Warranties</h2>
-    <h2 class="section-title cn">质量保证</h2>
-    
-    <div class="warranty-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Type 类型</th>
-            <th>Coverage 覆盖范围</th>
-            <th>Duration 时长</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong class="en">Material</strong><strong class="cn">材料质保*</strong></td>
-            <td class="en">Class 3/4 Impact-Resistant Shingles, etc.</td>
-            <td class="cn">Class 3/4 等级抗冲击瓦片等</td>
-            <td class="en">10-20 Years or Limited Lifetime</td>
-            <td class="cn">10-20年或有限终身</td>
-          </tr>
-          <tr>
-            <td><strong class="en">Workmanship</strong><strong class="cn">施工质保**</strong></td>
-            <td class="en">Roofing / Windows Installation</td>
-            <td class="cn">屋顶/门窗 安装</td>
-            <td class="en">5 Years</td>
-            <td class="cn">5年</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="en">Gutter / Siding Installation</td>
-            <td class="cn">雨水槽/外墙 安装</td>
-            <td class="en">2 Years</td>
-            <td class="cn">2年</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="warranty-note en">* Material backed by manufacturer. ** Workmanship backed by FLYING LAP LTD.</p>
-    <p class="warranty-note cn">* 材料质保由制造商提供。** 施工质保由 FLYING LAP LTD. 承担。</p>
-  </section>
+            /* Navigation - 玻璃拟态设计 */
+            .navbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: var(--glass);
+                backdrop-filter: blur(15px);
+                padding: 10px 5%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            .logo img {
+                height: 65px;
+                width: auto;
+                transition: var(--transition);
+            }
+            .nav-links {
+                display: flex;
+                gap: 35px;
+                align-items: center;
+            }
+            .nav-links a {
+                text-decoration: none;
+                color: var(--text-dark);
+                font-weight: 500;
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: var(--transition);
+            }
+            .nav-links a:not(.btn-quote):hover {
+                color: var(--accent);
+            }
 
-  <!-- Gallery -->
-  <section class="section bg-light" id="gallery">
-    <h2 class="section-title en">Gallery</h2>
-    <h2 class="section-title cn">工程案例</h2>
-    
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/1/Roof%20after.JPG" alt="Project 1">
-      </div>
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/2/Roof%20after_1.JPG" alt="Project 2">
-      </div>
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/3/roof%20b4_1.JPG" alt="Project 3">
-      </div>
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/2/siding%20b4_1.jpg" alt="Project 4">
-      </div>
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/3/roof%20after_1.JPG" alt="Project 5">
-      </div>
-      <div class="gallery-item">
-        <img src="Pic%20of%20website/Gallery/3/Roof%20after_2.JPG" alt="Project 6">
-      </div>
-    </div>
-  </section>
+            .btn-quote {
+                background: var(--primary);
+                color: white !important;
+                padding: 12px 28px;
+                border-radius: 4px;
+                font-weight: 600;
+                border: 2px solid var(--primary);
+            }
+            .btn-quote:hover {
+                background: transparent;
+                color: var(--primary) !important;
+            }
 
-  <!-- Contact -->
-  <section class="section contact-section" id="contact">
-    <h2 class="en">Contact Us Today</h2>
-    <h2 class="cn">立即联系我们</h2>
-    
-    <div class="contact-info">
-      <div class="contact-item">
-        <i class="fa-solid fa-phone"></i>
-        <p>825.986.2614</p>
-      </div>
-      <div class="contact-item">
-        <i class="fa-solid fa-envelope"></i>
-        <p>flp.pcen@gmail.com</p>
-      </div>
-      <div class="contact-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <p>12 Panora Way NW, Calgary T3K 0R3</p>
-      </div>
-    </div>
-  </section>
+            /* Hero Section - 沉浸式设计 */
+            .hero {
+                height: 100vh;
+                background:
+                    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)),
+                    url("Pic%20of%20website/Pic_Home.png");
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: white;
+                padding: 0 20px;
+            }
+            .hero-content h1 {
+                font-size: clamp(2rem, 5vw, 4rem);
+                font-weight: 700;
+                margin-bottom: 20px;
+                letter-spacing: -1px;
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            }
+            .hero-content .headline {
+                font-size: clamp(1rem, 2vw, 1.4rem);
+                margin-bottom: 40px;
+                font-weight: 300;
+                max-width: 800px;
+                margin-left: auto;
+                margin-right: auto;
+                opacity: 0.9;
+            }
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="logo">
-      <img src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png" alt="FLYING LAP LTD.">
-    </div>
-    <p>FLYING LAP LTD.</p>
-    <p>Gutter · Siding · Roofing · More</p>
-    <p>Professional exterior home services in Calgary.</p>
-  </footer>
+            /* 通用标题样式 */
+            .section {
+                padding: 100px 8%;
+            }
+            .section-title {
+                text-align: center;
+                font-size: 2.8rem;
+                font-weight: 700;
+                margin-bottom: 10px;
+                position: relative;
+                padding-bottom: 20px;
+            }
+            .section-title::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60px;
+                height: 4px;
+                background: var(--accent);
+            }
+            .section-subtitle {
+                text-align: center;
+                color: var(--text-muted);
+                font-size: 1.1rem;
+                margin-bottom: 60px;
+                font-weight: 300;
+            }
 
-  <script>
-    function toggleLang() {
-      document.body.classList.toggle('zh');
-      var btn = document.querySelector('.lang-switch');
-      btn.textContent = document.body.classList.contains('zh') ? 'EN' : '中文';
-    }
-    
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  </script>
-</body>
+            /* Services - 现代卡片 */
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+            }
+            .service-card {
+                background: white;
+                border-radius: 0;
+                overflow: hidden;
+                box-shadow: var(--shadow-sm);
+                transition: var(--transition);
+                border: 1px solid #eee;
+            }
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--shadow-md);
+                border-color: var(--accent);
+            }
+            .service-card img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+            .service-content {
+                padding: 30px;
+            }
+            .service-content h3 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+                color: var(--primary);
+            }
+            .service-content h4 {
+                font-size: 1rem;
+                color: var(--accent);
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+            .service-content p {
+                color: var(--text-muted);
+                font-size: 0.95rem;
+            }
+
+            /* Why Us - 扁平化图标设计 */
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+            }
+            .feature-box {
+                background: white;
+                padding: 40px;
+                transition: var(--transition);
+                border-bottom: 3px solid transparent;
+            }
+            .feature-box:hover {
+                background: #fff;
+                border-bottom-color: var(--accent);
+                box-shadow: var(--shadow-md);
+            }
+            .feature-box i {
+                font-size: 2.5rem;
+                color: var(--accent);
+                margin-bottom: 25px;
+            }
+            .feature-box h3 {
+                font-size: 1.25rem;
+                margin-bottom: 15px;
+                font-weight: 600;
+            }
+            .feature-box .cn-desc,
+            .feature-box p {
+                font-size: 0.9rem;
+                color: var(--text-muted);
+            }
+
+            /* Warranty - 极简表格 */
+            .warranty-table-container {
+                max-width: 900px;
+                margin: 0 auto;
+                background: white;
+                box-shadow: var(--shadow-md);
+                border-radius: 8px;
+                overflow: hidden;
+            }
+            .warranty-table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            .warranty-table th {
+                background: var(--primary);
+                color: white;
+                padding: 25px;
+                text-align: left;
+                font-weight: 500;
+            }
+            .warranty-table td {
+                padding: 20px 25px;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .warranty-table tr:hover {
+                background: #fcfcfc;
+            }
+
+            /* Gallery - 交错网格感 */
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 15px;
+            }
+            .gallery-item {
+                height: 300px;
+                overflow: hidden;
+                position: relative;
+            }
+            .gallery-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.08);
+            }
+
+            /* Contact Section */
+            .contact-section {
+                background: var(--primary);
+                color: white;
+                padding: 80px 5%;
+            }
+            .contact-info {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 60px;
+                margin-top: 50px;
+            }
+            .contact-item i {
+                font-size: 1.8rem;
+                color: var(--accent);
+                margin-bottom: 15px;
+                display: block;
+            }
+            .contact-item p {
+                font-size: 1.1rem;
+                font-weight: 300;
+            }
+
+            /* Footer */
+            .footer {
+                background: #111;
+                color: white;
+                padding: 60px 5% 30px;
+                text-align: center;
+            }
+            .footer .logo img {
+                height: 50px;
+                margin-bottom: 30px;
+                filter: brightness(0) invert(1);
+            }
+            .footer-text {
+                opacity: 0.6;
+                font-size: 0.9rem;
+                margin-top: 20px;
+                border-top: 1px solid #222;
+                padding-top: 20px;
+            }
+
+            /* Responsive */
+            @media (max-width: 992px) {
+                .nav-links {
+                    display: none;
+                }
+                .section {
+                    padding: 60px 5%;
+                }
+                .hero-content h1 {
+                    font-size: 2.5rem;
+                }
+            }
+
+            /* Language Toggling */
+            .cn {
+                display: none;
+            }
+            body.zh .en {
+                display: none;
+            }
+            body.zh .cn {
+                display: block;
+            }
+            body.zh .cn-inline {
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body>
+        <button class="lang-switch" onclick="toggleLang()">中文 / EN</button>
+
+        <nav class="navbar">
+            <div class="logo">
+                <img
+                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                    alt="FLYING LAP LTD."
+                />
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="en">Home</a
+                ><a href="#home" class="cn">首页</a>
+                <a href="#services" class="en">Services</a
+                ><a href="#services" class="cn">服务范围</a>
+                <a href="#why-us" class="en">Why Us?</a
+                ><a href="#why-us" class="cn">核心优势</a>
+                <a href="#warranties" class="en">Warranties</a
+                ><a href="#warranties" class="cn">质量保证</a>
+                <a href="#gallery" class="en">Gallery</a
+                ><a href="#gallery" class="cn">工程案例</a>
+                <a href="#contact" class="btn-quote en">Free Estimate</a>
+                <a href="#contact" class="btn-quote cn">预约免费估价</a>
+            </div>
+        </nav>
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="en">Driving Excellence for Your Home's Exterior</h1>
+                <h1 class="cn">追求极致，守护您家</h1>
+                <p class="headline en">
+                    Calgary's Premier Exterior Specialists: Built for Alberta,
+                    Driven by Precision.
+                </p>
+                <p class="headline cn">
+                    卡尔加里全方位外墙专家：立足阿省环境，追求极致工艺。
+                </p>
+                <a href="#contact" class="btn-quote en">Book a Free Estimate</a>
+                <a href="#contact" class="btn-quote cn">预约免费估价</a>
+            </div>
+        </section>
+
+        <section class="section" id="services">
+            <h2 class="section-title en">Our Services</h2>
+            <h2 class="section-title cn">服务范围</h2>
+            <p class="section-subtitle en">
+                Professional exterior solutions for Calgary homes
+            </p>
+            <p class="section-subtitle cn">
+                专业外墙解决方案，为卡尔加里住宅保驾护航
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing" />
+                    <div class="service-content">
+                        <h3 class="en">Roofing Systems</h3>
+                        <h3 class="cn">屋顶系统</h3>
+                        <h4 class="en">Impact-Resistant Solutions</h4>
+                        <h4 class="cn">抗冲击防护方案</h4>
+                        <p class="en">
+                            Professional installation and repair using premium
+                            Class 3 or Class 4 impact-resistant shingles. Built
+                            for Alberta's harsh climate.
+                        </p>
+                        <p class="cn">
+                            专业安装与维修，采用优质 Class 3 或 Class 4
+                            等级抗冲击瓦片。专为阿省恶劣气候设计。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img
+                        src="Pic%20of%20website/Gallery/2/siding%20b4_1.jpg"
+                        alt="Siding"
+                    />
+                    <div class="service-content">
+                        <h3 class="en">Siding Solutions</h3>
+                        <h3 class="cn">外墙方案</h3>
+                        <h4 class="en">Enhance Curb Appeal</h4>
+                        <h4 class="cn">提升建筑美感</h4>
+                        <p class="en">
+                            Durable, high-quality siding installations and
+                            repairs to enhance curb appeal and insulation with
+                            premium materials.
+                        </p>
+                        <p class="cn">
+                            高品质外墙安装与维修，提升房屋美感与隔热性能。用优质外墙材料改变您的家。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img
+                        src="Pic%20of%20website/Gallery/1/Gutter_B4.jpg"
+                        alt="Gutters"
+                    />
+                    <div class="service-content">
+                        <h3 class="en">Gutter & Guard</h3>
+                        <h3 class="cn">排水及防护系统</h3>
+                        <h4 class="en">Foundation Protection</h4>
+                        <h4 class="cn">地基全效防护</h4>
+                        <p class="en">
+                            On-site custom seamless gutters and professional
+                            protection systems to protect your foundation from
+                            water damage year-round.
+                        </p>
+                        <p class="cn">
+                            现场定制无缝雨水槽及专业防落叶系统，全年守护您的房屋地基，杜绝水害。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img
+                        src="Pic%20of%20website/Gallery/1/front.jpg"
+                        alt="Windows"
+                    />
+                    <div class="service-content">
+                        <h3 class="en">Windows & Doors</h3>
+                        <h3 class="cn">门窗工程</h3>
+                        <h4 class="en">Energy Efficiency</h4>
+                        <h4 class="cn">高效节能科技</h4>
+                        <p class="en">
+                            Energy-efficient installations tailored for
+                            Calgary's extreme climate, ensuring maximum comfort
+                            and lower bills.
+                        </p>
+                        <p class="cn">
+                            针对卡尔加里极端气候设计的节能门窗安装。节能门窗，带给您极致舒适感。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light" id="why-us">
+            <h2 class="section-title en">Why Choose Us?</h2>
+            <h2 class="section-title cn">核心优势</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fa-solid fa-tags"></i>
+                    <h3 class="en">Unbeatable Value</h3>
+                    <h3 class="cn">无与伦比的价格优势</h3>
+                    <p class="en">
+                        We offer top-tier materials and craftsmanship at
+                        industry-leading prices. Maximum value for your
+                        investment.
+                    </p>
+                    <p class="cn">
+                        在确保顶级材料与工艺的同时，提供极具竞争力的价格。让您的每一分投入都物超所值。
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <h3 class="en">Peace of Mind</h3>
+                    <h3 class="cn">安全保障</h3>
+                    <p class="en">
+                        Fully licensed with $5 Million CGL Insurance and WCB
+                        coverage. We protect your property and our team.
+                    </p>
+                    <p class="cn">
+                        500万加币商业责任险及WCB认证，全方位守护您的财产安全与施工安全。
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3 class="en">Rapid Response</h3>
+                    <h3 class="cn">极速响应</h3>
+                    <p class="en">
+                        True to our name "Flying Lap", we provide fast estimates
+                        and even faster service when you need us most.
+                    </p>
+                    <p class="cn">
+                        诚如公司名"Flying
+                        Lap"，我们提供极速报价与施工，在您最需要的时候绝不拖延。
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-file-shield"></i>
+                    <h3 class="en">Insurance Claims</h3>
+                    <h3 class="cn">协助保险理赔</h3>
+                    <p class="en">
+                        Dealing with hail damage? We provide professional
+                        inspections and guide you through the claim process.
+                    </p>
+                    <p class="cn">
+                        遭受冰雹灾害？我们提供专业受损检查，协助您完成理赔流程，确保获得应有保障。
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3 class="en">After-Sales</h3>
+                    <h3 class="cn">负责任的售后</h3>
+                    <p class="en">
+                        Our job isn't done until you are 100% satisfied. We
+                        stand by our work long after the project is complete.
+                    </p>
+                    <p class="cn">
+                        服务不因完工而停止。我们承诺负责到底的售后保障，让您无后顾之忧。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="warranties">
+            <h2 class="section-title en">Warranties</h2>
+            <h2 class="section-title cn">质量保证</h2>
+            <div class="warranty-table-container">
+                <table class="warranty-table">
+                    <thead>
+                        <tr>
+                            <th class="en">Warranty Type</th>
+                            <th class="cn">质保类型</th>
+                            <th class="en">Coverage</th>
+                            <th class="cn">覆盖范围</th>
+                            <th class="en">Duration</th>
+                            <th class="cn">时长</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <strong class="en">Material</strong
+                                ><strong class="cn">材料质保*</strong>
+                            </td>
+                            <td class="en">Impact-Resistant Shingles, etc.</td>
+                            <td class="cn">抗冲击瓦片等优质材料</td>
+                            <td class="en">10-20 Years / Lifetime</td>
+                            <td class="cn">10-20年或有限终身</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="en">Workmanship</strong
+                                ><strong class="cn">施工质保**</strong>
+                            </td>
+                            <td class="en">Roofing / Windows Installation</td>
+                            <td class="cn">屋顶/门窗 安装</td>
+                            <td class="en">5 Years</td>
+                            <td class="cn">5年</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="en">Gutter / Siding Installation</td>
+                            <td class="cn">雨水槽/外墙 安装</td>
+                            <td class="en">2 Years</td>
+                            <td class="cn">2年</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p
+                class="warranty-note en"
+                style="text-align: center; margin-top: 30px; opacity: 0.6"
+            >
+                * Material backed by manufacturer. ** Workmanship backed by
+                FLYING LAP LTD.
+            </p>
+            <p
+                class="warranty-note cn"
+                style="text-align: center; margin-top: 30px; opacity: 0.6"
+            >
+                * 材料质保由制造商提供。** 施工质保由 FLYING LAP LTD. 承担。
+            </p>
+        </section>
+
+        <section class="section bg-light" id="gallery">
+            <h2 class="section-title en">Recent Projects</h2>
+            <h2 class="section-title cn">工程案例</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/1/Roof%20after.JPG"
+                        alt="P1"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/2/Roof%20after_1.JPG"
+                        alt="P2"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/3/roof%20b4_1.JPG"
+                        alt="P3"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/2/siding%20b4_1.jpg"
+                        alt="P4"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/3/roof%20after_1.JPG"
+                        alt="P5"
+                    />
+                </div>
+                <div class="gallery-item">
+                    <img
+                        src="Pic%20of%20website/Gallery/3/Roof%20after_2.JPG"
+                        alt="P6"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact">
+            <h2 class="section-title en" style="color: white; border: none">
+                Get in Touch
+            </h2>
+            <h2 class="section-title cn" style="color: white; border: none">
+                立即联系我们
+            </h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>825.986.2614</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>flp.pcen@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>12 Panora Way NW, Calgary</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="logo">
+                <img
+                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                    alt="FLYING LAP LTD."
+                />
+            </div>
+            <p style="font-weight: 600; letter-spacing: 2px">FLYING LAP LTD.</p>
+            <p class="en">Gutter · Siding · Roofing · Exterior Specialists</p>
+            <p class="cn">雨水槽 · 外墙 · 屋顶 · 专业外墙工程</p>
+            <div class="footer-text">
+                <p>
+                    &copy; 2026 FLYING LAP LTD. All Rights Reserved.
+                    Professional Home Services in Calgary.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            function toggleLang() {
+                document.body.classList.toggle("zh");
+                var btn = document.querySelector(".lang-switch");
+                btn.textContent = document.body.classList.contains("zh")
+                    ? "EN / 中文"
+                    : "中文 / EN";
+            }
+
+            // Navbar scroll effect
+            window.addEventListener("scroll", function () {
+                const nav = document.querySelector(".navbar");
+                if (window.scrollY > 50) {
+                    nav.style.padding = "5px 5%";
+                    nav.style.boxShadow = "0 5px 20px rgba(0,0,0,0.1)";
+                } else {
+                    nav.style.padding = "10px 5%";
+                    nav.style.boxShadow = "none";
+                }
+            });
+        </script>
+    </body>
 </html>
