@@ -1,235 +1,842 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Noto+Sans+SC:wght@100;300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {--primary:#1d3d20;--accent:#d2b48c;--text-main:#1d1d1f;--text-muted:#86868b;--white:#ffffff;--bg-light:#f5f5f7;--glass-bg:rgba(255,255,255,0.72);--glass-blur:blur(20px)saturate(180%);--glass-border:rgba(0,0,0,0.08);--shadow-subtle:0 4px 12px rgba(0,0,0,0.05);--shadow-elevated:0 10px 30px rgba(0,0,0,0.08);--transition-apple:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth;font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;color:var(--text-main);background-color:var(--white)}
-        body{line-height:1.47059;letter-spacing:-0.022em}
-        body.zh .en{display:none!important}
-        body:not(.zh) .cn{display:none!important}
-        .lang-switch{background:transparent;border:1px solid var(--primary);color:var(--primary);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:500;font-size:12px;margin-left:15px;transition:all 0.3s ease}
-        .lang-switch:hover{background:var(--primary);color:white}
-        .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
-        .navbar.scrolled{padding:10px 5%;box-shadow:var(--shadow-elevated)}
-        .navbar .logo{display:flex;align-items:center;gap:12px}
-        .navbar .logo img{height:50px;width:auto;object-fit:contain}
-        .navbar .logo-text{display:flex;flex-direction:column;line-height:1.2}
-        .navbar .logo-main{font-size:18px;font-weight:700;color:var(--primary);letter-spacing:-0.02em}
-        .navbar .logo-sub{font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.1em}
-        .nav-links{display:flex;align-items:center;gap:8px}
-        .nav-links a{text-decoration:none;color:var(--text-main);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:var(--transition-apple)}
-        .nav-links a:hover,.nav-links a.active{background:var(--primary);color:white}
-        .nav-links .btn-quote{background:var(--accent);color:var(--primary);padding:10px 20px;border-radius:25px;font-weight:600;margin-left:10px}
-        .nav-links .btn-quote:hover,.nav-links .btn-quote.active{background:var(--primary);color:white}
-        .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--primary);cursor:pointer}
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.5)),url("Pic%20of%20website/Pic_Home.png") center/cover no-repeat}
-        .hero-content{max-width:800px;color:white}
-        .hero-content h1{font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px;letter-spacing:-0.03em}
-        .hero-content .headline{font-size:clamp(16px,2vw,20px);margin-bottom:40px;opacity:0.9}
-        .hero-content .btn-quote{display:inline-block;background:var(--accent);color:var(--primary);padding:16px 40px;border-radius:50px;font-size:16px;font-weight:600;text-decoration:none;transition:var(--transition-apple)}
-        .hero-content .btn-quote:hover{background:white;transform:scale(1.05)}
-        .section{padding:80px 5%}
-        .section.bg-light{background:var(--bg-light)}
-        .section-title{font-size:clamp(28px,4vw,42px);font-weight:700;text-align:center;margin-bottom:15px;letter-spacing:-0.03em;color:var(--primary)}
-        .section-subtitle{text-align:center;color:var(--text-muted);font-size:16px;margin-bottom:50px}
-        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1400px;margin:0 auto}
-        .service-card{background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-subtle);transition:var(--transition-apple)}
-        .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-elevated)}
-        .service-card img{width:100%;height:220px;object-fit:cover}
-        .service-content{padding:25px}
-        .service-content h3{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:5px}
-        .service-content h4{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:15px}
-        .service-content p{font-size:14px;color:var(--text-muted);line-height:1.6}
-        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1200px;margin:0 auto}
-        .feature-box{background:white;padding:30px;border-radius:16px;text-align:center;box-shadow:var(--shadow-subtle);transition:var(--transition-apple)}
-        .feature-box:hover{transform:translateY(-3px);box-shadow:var(--shadow-elevated)}
-        .feature-box i{font-size:36px;color:var(--primary);margin-bottom:20px}
-        .feature-box h3{font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text-main)}
-        .feature-box p{font-size:14px;color:var(--text-muted);line-height:1.6}
-        .warranties-trigger{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:white;padding:16px 32px;border-radius:30px;font-size:18px;font-weight:600;cursor:pointer;border:none;transition:var(--transition-apple)}
-        .warranties-trigger:hover{background:var(--accent);color:var(--primary)}
-        .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto}
-        .gallery-item{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
-        .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
-        .gallery-item:hover img{transform:scale(1.1)}
-        .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity 0.3s ease}
-        .gallery-item:hover .gallery-overlay{opacity:1}
-        .gallery-overlay span{color:white;font-weight:600}
-        .contact-section{background:var(--primary);color:white;text-align:center}
-        .contact-section .section-title{color:white}
-        .contact-info{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px}
-        .contact-item{display:flex;align-items:center;gap:12px;font-size:16px}
-        .contact-item i{color:var(--accent);font-size:20px}
-        .contact-item a{color:white;text-decoration:none}
-        .footer{background:#1a1a1a;color:white;padding:60px 5% 30px}
-        .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;max-width:1200px;margin:0 auto}
-        .footer-about .logo-wrapper{display:flex;align-items:center;gap:15px;margin-bottom:20px}
-        .footer-about .logo-wrapper img{height:60px;width:auto}
-        .footer-about .brand-name{font-size:20px;font-weight:700;letter-spacing:0.05em}
-        .footer-about p{font-size:14px;color:#999;line-height:1.6}
-        .footer-links h4{font-size:16px;font-weight:600;margin-bottom:20px;color:var(--accent)}
-        .footer-links ul{list-style:none}
-        .footer-links li{margin-bottom:12px}
-        .footer-links a{color:#999;text-decoration:none;font-size:14px;transition:color 0.3s}
-        .footer-links a:hover{color:white}
-        .footer-bottom{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid #333;font-size:14px;color:#666}
-        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;transition:opacity 0.3s ease}
-        .modal-overlay.active{display:flex;opacity:1}
-        .modal-content{background:white;border-radius:20px;max-width:100%;width:100%;max-height:100vh;padding:0;margin:0;overflow-y:auto};overflow-y:auto;position:relative;transform:scale(0.9);transition:transform 0.3s ease}
-        .modal-overlay.active .modal-content{transform:scale(1)}
-        .modal-header{padding:25px 30px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-        .modal-header h2{font-size:24px;font-weight:700;color:var(--primary)}
-        .modal-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-muted);transition:color 0.3s}
-        .modal-close:hover{color:var(--primary)}
-        .modal-body{padding:30px 40px 40px}
-        .warranty-modal-item{background:var(--bg-light);border-radius:16px;padding:25px;margin-bottom:20px}
-        .warranty-modal-item:last-child{margin-bottom:0}
-        .warranty-modal-item h3{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:15px;display:flex;align-items:center;gap:10px}
-        .warranty-modal-item .badge{background:var(--accent);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
-        .warranty-info-row{display:flex;gap:20px;margin-bottom:15px}
-        .warranty-info-row:last-child{margin-bottom:0}
-        .warranty-label{font-weight:600;color:var(--text-main);min-width:100px}
-        .warranty-value{color:var(--text-muted)}
-        .warranty-notes{margin-top:20px;padding-top:20px;border-top:1px solid #ddd;font-size:13px;color:var(--text-muted)}
-        .project-detail h3{font-size:28px;text-align:center;margin-bottom:25px;color:var(--primary);font-weight:700}
-.ba-section{background:#f8f8f8;border-radius:16px;padding:25px;margin-bottom:30px}
-.ba-section h4{font-size:22px;text-align:left;margin-bottom:20px;color:var(--primary);font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--accent)}
-.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.ba-item{border-radius:16px;overflow:hidden;aspect-ratio:16/4;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}.ba-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);color:white;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:500}
-.ba-item{border-radius:16px;overflow:hidden;aspect-ratio:16/4;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}
-.ba-item:hover{transform:scale(1.02)}
-.ba-item img{width:100%;height:100%;object-fit:cover}
-.ba-item img{width:100%;height:100%;object-fit:cover}
-        .gallery-project-item{border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;position:relative}
-        .gallery-project-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
-        .gallery-project-item:hover img{transform:scale(1.05)}
-        .gallery-project-item .project-label{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);color:white;font-weight:600}
-        @media(max-width:768px){.menu-toggle{display:block}.nav-links{position:fixed;top:70px;left:0;right:0;background:white;flex-direction:column;padding:20px;gap:10px;box-shadow:var(--shadow-elevated);display:none}.nav-links.active{display:flex}.nav-links a{width:100%;text-align:center}.nav-links .btn-quote{margin:10px 0 0}.hero-content h1{font-size:28px}.gallery-projects{grid-template-columns:1fr}.contact-info{flex-direction:column;align-items:center}}
-    </style>
-</head>
-<body>
-<nav class="navbar" id="navbar">
-    <div class="logo"><img src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png" alt="FLYING LAP LTD."><div class="logo-text"><span class="logo-main">FLYING LAP</span><span class="logo-sub">LTD.</span></div></div>
-    <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-    <div class="nav-links" id="navLinks">
-        <a href="#home" class="nav-link" data-section="home"><span class="en">Home</span><span class="cn">首页</span></a>
-        <a href="#services" class="nav-link" data-section="services"><span class="en">Services</span><span class="cn">服务范围</span></a>
-        <a href="#why-us" class="nav-link" data-section="why-us"><span class="en">Why Us</span><span class="cn">核心优势</span></a>
-        <a href="#warranties" class="nav-link" data-section="warranties"><span class="en">Warranties</span><span class="cn">质量保证</span></a>
-        <a href="#gallery" class="nav-link" data-section="gallery"><span class="en">Gallery</span><span class="cn">工程案例</span></a>
-        <a href="#contact" class="btn-quote nav-link" data-section="contact"><span class="en">Book a Free Estimate</span><span class="cn">预约免费估价</span></a>
-        <button class="lang-switch" onclick="toggleLang()">中文</button>
-    </div>
-</nav>
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h1><span class="en">Driving Excellence for Your Home's Exterior</span><span class="cn">追求极致，守护您家</span></h1>
-        <p class="headline"><span class="en">Calgary's Premier Exterior Specialists: Built for Alberta, Driven by Precision.</span><span class="cn">卡尔加里全方位外墙专家：立足阿省环境，追求极致工艺。</span></p>
-        <a href="#contact" class="btn-quote"><span class="en">Book a Free Estimate</span><span class="cn">预约免费估价</span></a>
-    </div>
-</section>
-<section class="section" id="services">
-    <h2 class="section-title"><span class="en">Our Services</span><span class="cn">服务范围</span></h2>
-    <p class="section-subtitle"><span class="en">Professional exterior solutions for Calgary homes</span><span class="cn">专业外墙解决方案，为卡尔加里住宅保驾护航</span></p>
-    <div class="services-grid">
-        <div class="service-card"><img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing"><div class="service-content"><h3><span class="en">Roofing Systems</span><span class="cn">屋顶系统</span></h3><h4><span class="en">Impact-Resistant Solutions</span><span class="cn">抗冲击防护方案</span></h4><p><span class="en">Professional installation and repair using premium Class 3 or Class 4 impact-resistant shingles. Built for Alberta's harsh climate.</span><span class="cn">专业安装与维修，采用优质 Class 3 或 Class 4 等级抗冲击瓦片。专为阿省恶劣气候设计。</span></p></div></div>
-        <div class="service-card"><img src="Pic%20of%20website/Pic_siding.jpg" alt="Siding"><div class="service-content"><h3><span class="en">Siding Solutions</span><span class="cn">外墙方案</span></h3><h4><span class="en">Enhance Curb Appeal</span><span class="cn">提升建筑美感</span></h4><p><span class="en">Durable, high-quality siding installations and repairs to enhance curb appeal and insulation with premium materials.</span><span class="cn">高品质外墙安装与维修，提升房屋美感与隔热性能。用优质外墙材料改变您的家。</span></p></div></div>
-        <div class="service-card"><img src="Pic%20of%20website/Pic_gutter.jpg" alt="Gutters"><div class="service-content"><h3><span class="en">Gutter & Guard</span><span class="cn">排水及防护系统</span></h3><h4><span class="en">Foundation Protection</span><span class="cn">地基全效防护</span></h4><p><span class="en">On-site custom seamless gutters and professional protection systems to protect your foundation from water damage year-round.</span><span class="cn">现场定制无缝雨水槽及专业防落叶系统，全年守护您的房屋地基，杜绝水害。</span></p></div></div>
-        <div class="service-card"><img src="Pic%20of%20website/Pic_win.jpg" alt="Windows"><div class="service-content"><h3><span class="en">Windows & Doors</span><span class="cn">门窗工程</span></h3><h4><span class="en">Energy Efficiency</span><span class="cn">高效节能科技</span></h4><p><span class="en">Energy-efficient installations tailored for Calgary's extreme climate, ensuring maximum comfort and lower bills.</span><span class="cn">针对卡尔加里极端气候设计的节能门窗安装。节能门窗，带给您极致舒适感。</span></p></div></div>
-    </div>
-</section>
-<section class="section bg-light" id="why-us">
-    <h2 class="section-title"><span class="en">Why Choose Us?</span><span class="cn">核心优势</span></h2>
-    <div class="features-grid">
-        <div class="feature-box"><i class="fa-solid fa-tags"></i><h3><span class="en">Unbeatable Value</span><span class="cn">无与伦比的价格优势</span></h3><p><span class="en">We offer top-tier materials and craftsmanship at industry-leading prices.</span><span class="cn">在确保顶级材料与工艺的同时，提供极具竞争力的价格。</span></p></div>
-        <div class="feature-box"><i class="fa-solid fa-shield-heart"></i><h3><span class="en">Peace of Mind</span><span class="cn">安全保障</span></h3><p><span class="en">Fully licensed with $5 Million CGL Insurance and WCB coverage.</span><span class="cn">500万加币商业责任险及WCB认证，全方位守护您的财产安全与施工安全。</span></p></div>
-        <div class="feature-box"><i class="fa-solid fa-bolt"></i><h3><span class="en">Rapid Response</span><span class="cn">极速响应</span></h3><p><span class="en">True to our name "Flying Lap", we provide fast estimates and service.</span><span class="cn">诚如公司名"Flying Lap"，我们提供极速报价与施工。</span></p></div>
-        <div class="feature-box"><i class="fa-solid fa-file-shield"></i><h3><span class="en">Insurance Claims Support</span><span class="cn">协助保险理赔</span></h3><p><span class="en">Dealing with hail damage? We provide professional inspections and guide you through the claim process.</span><span class="cn">遭受冰雹灾害？我们提供专业受损检查，协助您完成理赔流程。</span></p></div>
-        <div class="feature-box"><i class="fa-solid fa-handshake"></i><h3><span class="en">After-Sales</span><span class="cn">负责任的售后</span></h3><p><span class="en">Our job isn't done until you are 100% satisfied.</span><span class="cn">服务不因完工而停止。我们承诺负责到底的售后保障。</span></p></div>
-    </div>
-</section>
-<section class="section" id="warranties">
-    <h2 class="section-title"><span class="en">Warranties</span><span class="cn">质量保证</span></h2>
-    <p class="section-subtitle"><span class="en">Rock-solid guarantee for complete peace of mind</span><span class="cn">每一份工程，都承载我们坚实的承诺</span></p>
-    <div style="text-align:center"><button class="warranties-trigger" onclick="openWarrantyModal()"><i class="fas fa-shield-alt"></i><span class="en">View Warranty Details</span><span class="cn">查看质保详情</span></button></div>
-</section>
-<section class="section bg-light" id="gallery">
-    <h2 class="section-title"><span class="en">Recent Projects</span><span class="cn">工程案例</span></h2>
-    <div class="gallery-grid">
-        <div class="gallery-item" onclick="openGalleryModal(1)"><img src="Pic%20of%20website/Roof%20B4.JPG" alt="Project 1"><div class="gallery-overlay"><span>Project 1 - Roof</span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal(2)"><img src="Pic%20of%20website/Siding%20b4_1.jpg" alt="Project 2"><div class="gallery-overlay"><span>Project 2 - Siding</span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal(3)"><img src="Pic%20of%20website/Gutter_B4.jpg" alt="Project 3"><div class="gallery-overlay"><span>Project 3 - Gutter</span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal(4)"><img src="Pic%20of%20website/roof%20b4_1.JPG" alt="Project 4"><div class="gallery-overlay"><span>Project 4 - Roof</span></div></div>
-    </div>
-</section>
-<section class="section contact-section" id="contact">
-    <h2 class="section-title"><span class="en">Contact Us Today</span><span class="cn">立即联系我们</span></h2>
-    <div class="contact-info"><div class="contact-item"><i class="fa-solid fa-phone"></i><a href="tel:8259862614">825.986.2614</a></div><div class="contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:flp.pcen@gmail.com">flp.pcen@gmail.com</a></div><div class="contact-item"><i class="fa-solid fa-location-dot"></i><p>12 Panora Way NW, Calgary T3K 0R3</p></div></div>
-</section>
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-about"><div class="logo-wrapper"><img src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png" alt="Flying Lap Ltd. Logo"></div><p><span class="en">Calgary's trusted residential and commercial exterior specialists.</span><span class="cn">卡尔加里备受信赖的住宅和商业外墙专家。</span></p></div>
-        <div class="footer-links"><h4><span class="en">Navigate</span><span class="cn">快速链接</span></h4><ul><li><a href="#services"><span class="en">Services</span><span class="cn">服务范围</span></a></li><li><a href="#warranties"><span class="en">Warranties</span><span class="cn">质量保证</span></a></li><li><a href="#gallery"><span class="en">Gallery</span><span class="cn">工程案例</span></a></li></ul></div>
-        <div class="footer-links"><h4><span class="en">Contact</span><span class="cn">联系我们</span></h4><ul><li><a href="tel:8259862614">tel. 825.986.2614</a></li><li><a href="mailto:flp.pcen@gmail.com">flp.pcen@gmail.com</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 FLYING LAP LTD. All Rights Reserved.</p></div>
-</footer>
-<div class="modal-overlay" id="warrantyModal">
-    <div class="modal-content">
-        <div class="modal-header"><h2><span class="en">Warranty Details</span><span class="cn">质保详情</span></h2><button class="modal-close" onclick="closeWarrantyModal()">&times;</button></div>
-        <div class="modal-body">
-            <div class="warranty-modal-item"><h3><span class="en">Material</span><span class="cn">材料质保</span> <span class="badge">PREMIUM</span></h3><div class="warranty-info-row"><span class="warranty-label"><span class="en">Coverage</span><span class="cn">覆盖范围</span>:</span><span class="warranty-value"><span class="en">Impact-Resistant Shingles, Siding & Gutter Materials</span><span class="cn">抗冲击瓦片、外墙及雨水槽型材</span></span></div><div class="warranty-info-row"><span class="warranty-label"><span class="en">Duration</span><span class="cn">时长</span>:</span><span class="warranty-value"><span class="en">10-20 Years / Lifetime</span><span class="cn">10-20年或有限终身</span></span></div></div>
-            <div class="warranty-modal-item"><h3><span class="en">Workmanship (Roofing & Windows)</span><span class="cn">施工质保 (屋顶及门窗)</span> <span class="badge">EXPERT</span></h3><div class="warranty-info-row"><span class="warranty-label"><span class="en">Coverage</span><span class="cn">覆盖范围</span>:</span><span class="warranty-value"><span class="en">Roofing & Windows Installation</span><span class="cn">屋顶及门窗安装工程</span></span></div><div class="warranty-info-row"><span class="warranty-label"><span class="en">Duration</span><span class="cn">时长</span>:</span><span class="warranty-value"><span class="en">5 Years</span><span class="cn">5年</span></span></div></div>
-            <div class="warranty-modal-item"><h3><span class="en">Workmanship (Gutter & Siding)</span><span class="cn">施工质保 (雨水槽及外墙)</span> <span class="badge">GUARANTEED</span></h3><div class="warranty-info-row"><span class="warranty-label"><span class="en">Coverage</span><span class="cn">覆盖范围</span>:</span><span class="warranty-value"><span class="en">Gutter & Siding Installation</span><span class="cn">雨水槽及外墙安装工程</span></span></div><div class="warranty-info-row"><span class="warranty-label"><span class="en">Duration</span><span class="cn">时长</span>:</span><span class="warranty-value"><span class="en">2 Years</span><span class="cn">2年</span></span></div></div>
-            <div class="warranty-notes"><p><span class="en">* Material backed by manufacturer. ** Workmanship backed by FLYING LAP LTD.</span><span class="cn">* 材料质保由制造商提供。** 施工质保由 FLYING LAP LTD. 承担。</span></p></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800&family=Noto+Sans+SC:wght@100;300;400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <style>
+                    :root {--primary:#1d3d20;--accent:#d2b48c;--text-main:#1d1d1f;--text-muted:#86868b;--white:#ffffff;--bg-light:#f5f5f7;--glass-bg:rgba(255,255,255,0.72);--glass-blur:blur(20px)saturate(180%);--glass-border:rgba(0,0,0,0.08);--shadow-subtle:0 4px 12px rgba(0,0,0,0.05);--shadow-elevated:0 10px 30px rgba(0,0,0,0.08);--transition-apple:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+                    *{margin:0;padding:0;box-sizing:border-box}
+                    html{scroll-behavior:smooth;font-family:"Inter","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;color:var(--text-main);background-color:var(--white)}
+                    body{line-height:1.47059;letter-spacing:-0.022em}
+                    body.zh .en{display:none!important}
+                    body:not(.zh) .cn{display:none!important}
+                    .lang-switch{background:transparent;border:1px solid var(--primary);color:var(--primary);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:500;font-size:12px;margin-left:15px;transition:all 0.3s ease}
+                    .lang-switch:hover{background:var(--primary);color:white}
+                    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
+                    .navbar.scrolled{padding:10px 5%;box-shadow:var(--shadow-elevated)}
+                    .navbar .logo{display:flex;align-items:center;gap:12px}
+                    .navbar .logo img{height:50px;width:auto;object-fit:contain}
+                    .navbar .logo-text{display:flex;flex-direction:column;line-height:1.2}
+                    .navbar .logo-main{font-size:18px;font-weight:700;color:var(--primary);letter-spacing:-0.02em}
+                    .navbar .logo-sub{font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.1em}
+                    .nav-links{display:flex;align-items:center;gap:8px}
+                    .nav-links a{text-decoration:none;color:var(--text-main);font-size:14px;font-weight:500;padding:8px 14px;border-radius:8px;transition:var(--transition-apple)}
+                    .nav-links a:hover,.nav-links a.active{background:var(--primary);color:white}
+                    .nav-links .btn-quote{background:var(--accent);color:var(--primary);padding:10px 20px;border-radius:25px;font-weight:600;margin-left:10px}
+                    .nav-links .btn-quote:hover,.nav-links .btn-quote.active{background:var(--primary);color:white}
+                    .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--primary);cursor:pointer}
+                    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.5)),url("Pic%20of%20website/Pic_Home.png") center/cover no-repeat}
+                    .hero-content{max-width:800px;color:white}
+                    .hero-content h1{font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px;letter-spacing:-0.03em}
+                    .hero-content .headline{font-size:clamp(16px,2vw,20px);margin-bottom:40px;opacity:0.9}
+                    .hero-content .btn-quote{display:inline-block;background:var(--accent);color:var(--primary);padding:16px 40px;border-radius:50px;font-size:16px;font-weight:600;text-decoration:none;transition:var(--transition-apple)}
+                    .hero-content .btn-quote:hover{background:white;transform:scale(1.05)}
+                    .section{padding:80px 5%}
+                    .section.bg-light{background:var(--bg-light)}
+                    .section-title{font-size:clamp(28px,4vw,42px);font-weight:700;text-align:center;margin-bottom:15px;letter-spacing:-0.03em;color:var(--primary)}
+                    .section-subtitle{text-align:center;color:var(--text-muted);font-size:16px;margin-bottom:50px}
+                    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1400px;margin:0 auto}
+                    .service-card{background:white;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-subtle);transition:var(--transition-apple)}
+                    .service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-elevated)}
+                    .service-card img{width:100%;height:220px;object-fit:cover}
+                    .service-content{padding:25px}
+                    .service-content h3{font-size:20px;font-weight:700;color:var(--primary);margin-bottom:5px}
+                    .service-content h4{font-size:14px;font-weight:500;color:var(--accent);margin-bottom:15px}
+                    .service-content p{font-size:14px;color:var(--text-muted);line-height:1.6}
+                    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;max-width:1200px;margin:0 auto}
+                    .feature-box{background:white;padding:30px;border-radius:16px;text-align:center;box-shadow:var(--shadow-subtle);transition:var(--transition-apple)}
+                    .feature-box:hover{transform:translateY(-3px);box-shadow:var(--shadow-elevated)}
+                    .feature-box i{font-size:36px;color:var(--primary);margin-bottom:20px}
+                    .feature-box h3{font-size:18px;font-weight:600;margin-bottom:12px;color:var(--text-main)}
+                    .feature-box p{font-size:14px;color:var(--text-muted);line-height:1.6}
+                    .warranties-trigger{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:white;padding:16px 32px;border-radius:30px;font-size:18px;font-weight:600;cursor:pointer;border:none;transition:var(--transition-apple)}
+                    .warranties-trigger:hover{background:var(--accent);color:var(--primary)}
+                    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+                    .gallery-item{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
+                    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease}
+                    .gallery-item:hover img{transform:scale(1.1)}
+                    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);display:flex;align-items:flex-end;padding:20px;opacity:0;transition:opacity 0.3s ease}
+                    .gallery-item:hover .gallery-overlay{opacity:1}
+                    .gallery-overlay span{color:white;font-weight:600}
+                    .contact-section{background:var(--primary);color:white;text-align:center}
+                    .contact-section .section-title{color:white}
+                    .contact-info{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:30px}
+                    .contact-item{display:flex;align-items:center;gap:12px;font-size:16px}
+                    .contact-item i{color:var(--accent);font-size:20px}
+                    .contact-item a{color:white;text-decoration:none}
+                    .footer{background:#1a1a1a;color:white;padding:60px 5% 30px}
+                    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px;max-width:1200px;margin:0 auto}
+                    .footer-about .logo-wrapper{display:flex;align-items:center;gap:15px;margin-bottom:20px}
+                    .footer-about .logo-wrapper img{height:60px;width:auto}
+                    .footer-about .brand-name{font-size:20px;font-weight:700;letter-spacing:0.05em}
+                    .footer-about p{font-size:14px;color:#999;line-height:1.6}
+                    .footer-links h4{font-size:16px;font-weight:600;margin-bottom:20px;color:var(--accent)}
+                    .footer-links ul{list-style:none}
+                    .footer-links li{margin-bottom:12px}
+                    .footer-links a{color:#999;text-decoration:none;font-size:14px;transition:color 0.3s}
+                    .footer-links a:hover{color:white}
+                    .footer-bottom{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid #333;font-size:14px;color:#666}
+                    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;transition:opacity 0.3s ease}
+                    .modal-overlay.active{display:flex;opacity:1}
+                    .modal-content{background:white;border-radius:20px;max-width:100%;width:100%;max-height:100vh;padding:0;margin:0;overflow-y:auto};overflow-y:auto;position:relative;transform:scale(0.9);transition:transform 0.3s ease}
+                    .modal-overlay.active .modal-content{transform:scale(1)}
+                    .modal-header{padding:25px 30px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+                    .modal-header h2{font-size:24px;font-weight:700;color:var(--primary)}
+                    .modal-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-muted);transition:color 0.3s}
+                    .modal-close:hover{color:var(--primary)}
+                    .modal-body{padding:5px}
+                    .warranty-modal-item{background:var(--bg-light);border-radius:16px;padding:25px;margin-bottom:20px}
+                    .warranty-modal-item:last-child{margin-bottom:0}
+                    .warranty-modal-item h3{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:15px;display:flex;align-items:center;gap:10px}
+                    .warranty-modal-item .badge{background:var(--accent);color:var(--primary);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600}
+                    .warranty-info-row{display:flex;gap:20px;margin-bottom:15px}
+                    .warranty-info-row:last-child{margin-bottom:0}
+                    .warranty-label{font-weight:600;color:var(--text-main);min-width:100px}
+                    .warranty-value{color:var(--text-muted)}
+                    .warranty-notes{margin-top:20px;padding-top:20px;border-top:1px solid #ddd;font-size:13px;color:var(--text-muted)}
+                    .project-detail h3{font-size:28px;text-align:center;margin-bottom:25px;color:var(--primary);font-weight:700}
+            .ba-section{background:#f8f8f8;border-radius:16px;padding:0px;margin-bottom:30px}
+            .ba-section h4{font-size:22px;text-align:left;margin-bottom:20px;color:var(--primary);font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--accent)}
+            .ba-grid{display:grid;grid-template-columns:1fr;gap:20px}
+            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:16/4;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}.ba-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);color:white;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:500}
+            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:16/4;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}
+            .ba-item:hover{transform:scale(1.02)}
+            .ba-item img{width:100%;height:100%;object-fit:cover}
+                    .gallery-project-item{border-radius:16px;overflow:hidden;cursor:pointer;position:relative}
+                    .gallery-project-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
+                    .gallery-project-item:hover img{transform:scale(1.05)}
+                    .gallery-project-item .project-label{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);color:white;font-weight:600}
+                    @media(max-width:768px){.menu-toggle{display:block}.nav-links{position:fixed;top:70px;left:0;right:0;background:white;flex-direction:column;padding:20px;gap:10px;box-shadow:var(--shadow-elevated);display:none}.nav-links.active{display:flex}.nav-links a{width:100%;text-align:center}.nav-links .btn-quote{margin:10px 0 0}.hero-content h1{font-size:28px}.gallery-projects{grid-template-columns:1fr}.contact-info{flex-direction:column;align-items:center}}
+        </style>
+    </head>
+    <body>
+        <nav class="navbar" id="navbar">
+            <div class="logo">
+                <img
+                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                    alt="FLYING LAP LTD."
+                />
+                <div class="logo-text">
+                    <span class="logo-main">FLYING LAP</span
+                    ><span class="logo-sub">LTD.</span>
+                </div>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link" data-section="home"
+                    ><span class="en">Home</span><span class="cn">首页</span></a
+                >
+                <a href="#services" class="nav-link" data-section="services"
+                    ><span class="en">Services</span
+                    ><span class="cn">服务范围</span></a
+                >
+                <a href="#why-us" class="nav-link" data-section="why-us"
+                    ><span class="en">Why Us</span
+                    ><span class="cn">核心优势</span></a
+                >
+                <a href="#warranties" class="nav-link" data-section="warranties"
+                    ><span class="en">Warranties</span
+                    ><span class="cn">质量保证</span></a
+                >
+                <a href="#gallery" class="nav-link" data-section="gallery"
+                    ><span class="en">Gallery</span
+                    ><span class="cn">工程案例</span></a
+                >
+                <a
+                    href="#contact"
+                    class="btn-quote nav-link"
+                    data-section="contact"
+                    ><span class="en">Book a Free Estimate</span
+                    ><span class="cn">预约免费估价</span></a
+                >
+                <button class="lang-switch" onclick="toggleLang()">中文</button>
+            </div>
+        </nav>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>
+                    <span class="en"
+                        >Driving Excellence for Your Home's Exterior</span
+                    ><span class="cn">追求极致，守护您家</span>
+                </h1>
+                <p class="headline">
+                    <span class="en"
+                        >Calgary's Premier Exterior Specialists: Built for
+                        Alberta, Driven by Precision.</span
+                    ><span class="cn"
+                        >卡尔加里全方位外墙专家：立足阿省环境，追求极致工艺。</span
+                    >
+                </p>
+                <a href="#contact" class="btn-quote"
+                    ><span class="en">Book a Free Estimate</span
+                    ><span class="cn">预约免费估价</span></a
+                >
+            </div>
+        </section>
+        <section class="section" id="services">
+            <h2 class="section-title">
+                <span class="en">Our Services</span
+                ><span class="cn">服务范围</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="en"
+                    >Professional exterior solutions for Calgary homes</span
+                ><span class="cn"
+                    >专业外墙解决方案，为卡尔加里住宅保驾护航</span
+                >
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing" />
+                    <div class="service-content">
+                        <h3>
+                            <span class="en">Roofing Systems</span
+                            ><span class="cn">屋顶系统</span>
+                        </h3>
+                        <h4>
+                            <span class="en">Impact-Resistant Solutions</span
+                            ><span class="cn">抗冲击防护方案</span>
+                        </h4>
+                        <p>
+                            <span class="en"
+                                >Professional installation and repair using
+                                premium Class 3 or Class 4 impact-resistant
+                                shingles. Built for Alberta's harsh
+                                climate.</span
+                            ><span class="cn"
+                                >专业安装与维修，采用优质 Class 3 或 Class 4
+                                等级抗冲击瓦片。专为阿省恶劣气候设计。</span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="Pic%20of%20website/Pic_siding.jpg" alt="Siding" />
+                    <div class="service-content">
+                        <h3>
+                            <span class="en">Siding Solutions</span
+                            ><span class="cn">外墙方案</span>
+                        </h3>
+                        <h4>
+                            <span class="en">Enhance Curb Appeal</span
+                            ><span class="cn">提升建筑美感</span>
+                        </h4>
+                        <p>
+                            <span class="en"
+                                >Durable, high-quality siding installations and
+                                repairs to enhance curb appeal and insulation
+                                with premium materials.</span
+                            ><span class="cn"
+                                >高品质外墙安装与维修，提升房屋美感与隔热性能。用优质外墙材料改变您的家。</span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img
+                        src="Pic%20of%20website/Pic_gutter.jpg"
+                        alt="Gutters"
+                    />
+                    <div class="service-content">
+                        <h3>
+                            <span class="en">Gutter & Guard</span
+                            ><span class="cn">排水及防护系统</span>
+                        </h3>
+                        <h4>
+                            <span class="en">Foundation Protection</span
+                            ><span class="cn">地基全效防护</span>
+                        </h4>
+                        <p>
+                            <span class="en"
+                                >On-site custom seamless gutters and
+                                professional protection systems to protect your
+                                foundation from water damage year-round.</span
+                            ><span class="cn"
+                                >现场定制无缝雨水槽及专业防落叶系统，全年守护您的房屋地基，杜绝水害。</span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="Pic%20of%20website/Pic_win.jpg" alt="Windows" />
+                    <div class="service-content">
+                        <h3>
+                            <span class="en">Windows & Doors</span
+                            ><span class="cn">门窗工程</span>
+                        </h3>
+                        <h4>
+                            <span class="en">Energy Efficiency</span
+                            ><span class="cn">高效节能科技</span>
+                        </h4>
+                        <p>
+                            <span class="en"
+                                >Energy-efficient installations tailored for
+                                Calgary's extreme climate, ensuring maximum
+                                comfort and lower bills.</span
+                            ><span class="cn"
+                                >针对卡尔加里极端气候设计的节能门窗安装。节能门窗，带给您极致舒适感。</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section bg-light" id="why-us">
+            <h2 class="section-title">
+                <span class="en">Why Choose Us?</span
+                ><span class="cn">核心优势</span>
+            </h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <i class="fa-solid fa-tags"></i>
+                    <h3>
+                        <span class="en">Unbeatable Value</span
+                        ><span class="cn">无与伦比的价格优势</span>
+                    </h3>
+                    <p>
+                        <span class="en"
+                            >We offer top-tier materials and craftsmanship at
+                            industry-leading prices.</span
+                        ><span class="cn"
+                            >在确保顶级材料与工艺的同时，提供极具竞争力的价格。</span
+                        >
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <h3>
+                        <span class="en">Peace of Mind</span
+                        ><span class="cn">安全保障</span>
+                    </h3>
+                    <p>
+                        <span class="en"
+                            >Fully licensed with $5 Million CGL Insurance and
+                            WCB coverage.</span
+                        ><span class="cn"
+                            >500万加币商业责任险及WCB认证，全方位守护您的财产安全与施工安全。</span
+                        >
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h3>
+                        <span class="en">Rapid Response</span
+                        ><span class="cn">极速响应</span>
+                    </h3>
+                    <p>
+                        <span class="en"
+                            >True to our name "Flying Lap", we provide fast
+                            estimates and service.</span
+                        ><span class="cn"
+                            >诚如公司名"Flying
+                            Lap"，我们提供极速报价与施工。</span
+                        >
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-file-shield"></i>
+                    <h3>
+                        <span class="en">Insurance Claims Support</span
+                        ><span class="cn">协助保险理赔</span>
+                    </h3>
+                    <p>
+                        <span class="en"
+                            >Dealing with hail damage? We provide professional
+                            inspections and guide you through the claim
+                            process.</span
+                        ><span class="cn"
+                            >遭受冰雹灾害？我们提供专业受损检查，协助您完成理赔流程。</span
+                        >
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <i class="fa-solid fa-handshake"></i>
+                    <h3>
+                        <span class="en">After-Sales</span
+                        ><span class="cn">负责任的售后</span>
+                    </h3>
+                    <p>
+                        <span class="en"
+                            >Our job isn't done until you are 100%
+                            satisfied.</span
+                        ><span class="cn"
+                            >服务不因完工而停止。我们承诺负责到底的售后保障。</span
+                        >
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="warranties">
+            <h2 class="section-title">
+                <span class="en">Warranties</span
+                ><span class="cn">质量保证</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="en"
+                    >Rock-solid guarantee for complete peace of mind</span
+                ><span class="cn">每一份工程，都承载我们坚实的承诺</span>
+            </p>
+            <div style="text-align: center">
+                <button
+                    class="warranties-trigger"
+                    onclick="openWarrantyModal()"
+                >
+                    <i class="fas fa-shield-alt"></i
+                    ><span class="en">View Warranty Details</span
+                    ><span class="cn">查看质保详情</span>
+                </button>
+            </div>
+        </section>
+        <section class="section bg-light" id="gallery">
+            <h2 class="section-title">
+                <span class="en">Recent Projects</span
+                ><span class="cn">工程案例</span>
+            </h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openGalleryModal(1)">
+                    <img
+                        src="Pic%20of%20website/Roof%20B4.JPG"
+                        alt="Project 1"
+                    />
+                    <div class="gallery-overlay">
+                        <span>Project 1 - Roof</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(2)">
+                    <img
+                        src="Pic%20of%20website/Siding%20b4_1.jpg"
+                        alt="Project 2"
+                    />
+                    <div class="gallery-overlay">
+                        <span>Project 2 - Siding</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(3)">
+                    <img
+                        src="Pic%20of%20website/Gutter_B4.jpg"
+                        alt="Project 3"
+                    />
+                    <div class="gallery-overlay">
+                        <span>Project 3 - Gutter</span>
+                    </div>
+                </div>
+                <div class="gallery-item" onclick="openGalleryModal(4)">
+                    <img
+                        src="Pic%20of%20website/roof%20b4_1.JPG"
+                        alt="Project 4"
+                    />
+                    <div class="gallery-overlay">
+                        <span>Project 4 - Roof</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section contact-section" id="contact">
+            <h2 class="section-title">
+                <span class="en">Contact Us Today</span
+                ><span class="cn">立即联系我们</span>
+            </h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i
+                    ><a href="tel:8259862614">825.986.2614</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i
+                    ><a href="mailto:flp.pcen@gmail.com">flp.pcen@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>12 Panora Way NW, Calgary T3K 0R3</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="logo-wrapper">
+                        <img
+                            src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                            alt="Flying Lap Ltd. Logo"
+                        />
+                    </div>
+                    <p>
+                        <span class="en"
+                            >Calgary's trusted residential and commercial
+                            exterior specialists.</span
+                        ><span class="cn"
+                            >卡尔加里备受信赖的住宅和商业外墙专家。</span
+                        >
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Navigate</span
+                        ><span class="cn">快速链接</span>
+                    </h4>
+                    <ul>
+                        <li>
+                            <a href="#services"
+                                ><span class="en">Services</span
+                                ><span class="cn">服务范围</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#warranties"
+                                ><span class="en">Warranties</span
+                                ><span class="cn">质量保证</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="#gallery"
+                                ><span class="en">Gallery</span
+                                ><span class="cn">工程案例</span></a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Contact</span
+                        ><span class="cn">联系我们</span>
+                    </h4>
+                    <ul>
+                        <li><a href="tel:8259862614">tel. 825.986.2614</a></li>
+                        <li>
+                            <a href="mailto:flp.pcen@gmail.com"
+                                >flp.pcen@gmail.com</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FLYING LAP LTD. All Rights Reserved.</p>
+            </div>
+        </footer>
+        <div class="modal-overlay" id="warrantyModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        <span class="en">Warranty Details</span
+                        ><span class="cn">质保详情</span>
+                    </h2>
+                    <button class="modal-close" onclick="closeWarrantyModal()">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="warranty-modal-item">
+                        <h3>
+                            <span class="en">Material</span
+                            ><span class="cn">材料质保</span>
+                            <span class="badge">PREMIUM</span>
+                        </h3>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Coverage</span
+                                ><span class="cn">覆盖范围</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en"
+                                    >Impact-Resistant Shingles, Siding & Gutter
+                                    Materials</span
+                                ><span class="cn"
+                                    >抗冲击瓦片、外墙及雨水槽型材</span
+                                ></span
+                            >
+                        </div>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Duration</span
+                                ><span class="cn">时长</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en">10-20 Years / Lifetime</span
+                                ><span class="cn">10-20年或有限终身</span></span
+                            >
+                        </div>
+                    </div>
+                    <div class="warranty-modal-item">
+                        <h3>
+                            <span class="en"
+                                >Workmanship (Roofing & Windows)</span
+                            ><span class="cn">施工质保 (屋顶及门窗)</span>
+                            <span class="badge">EXPERT</span>
+                        </h3>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Coverage</span
+                                ><span class="cn">覆盖范围</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en"
+                                    >Roofing & Windows Installation</span
+                                ><span class="cn"
+                                    >屋顶及门窗安装工程</span
+                                ></span
+                            >
+                        </div>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Duration</span
+                                ><span class="cn">时长</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en">5 Years</span
+                                ><span class="cn">5年</span></span
+                            >
+                        </div>
+                    </div>
+                    <div class="warranty-modal-item">
+                        <h3>
+                            <span class="en">Workmanship (Gutter & Siding)</span
+                            ><span class="cn">施工质保 (雨水槽及外墙)</span>
+                            <span class="badge">GUARANTEED</span>
+                        </h3>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Coverage</span
+                                ><span class="cn">覆盖范围</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en"
+                                    >Gutter & Siding Installation</span
+                                ><span class="cn"
+                                    >雨水槽及外墙安装工程</span
+                                ></span
+                            >
+                        </div>
+                        <div class="warranty-info-row">
+                            <span class="warranty-label"
+                                ><span class="en">Duration</span
+                                ><span class="cn">时长</span>:</span
+                            ><span class="warranty-value"
+                                ><span class="en">2 Years</span
+                                ><span class="cn">2年</span></span
+                            >
+                        </div>
+                    </div>
+                    <div class="warranty-notes">
+                        <p>
+                            <span class="en"
+                                >* Material backed by manufacturer. **
+                                Workmanship backed by FLYING LAP LTD.</span
+                            ><span class="cn"
+                                >* 材料质保由制造商提供。** 施工质保由 FLYING
+                                LAP LTD. 承担。</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="modal-overlay" id="galleryModal">
-    <div class="modal-content">
-        <div class="modal-header"><h2><span class="en">Select Project</span><span class="cn">选择项目</span></h2><button class="modal-close" onclick="closeGalleryModal()">&times;</button></div>
-        <div class="modal-body"><div class="gallery-projects"><div class="gallery-project-item"><img src="Pic%20of%20website/Roof%20B4.JPG" alt="P1"><div class="project-label">Roof B4</div></div><div class="gallery-project-item"><img src="Pic%20of%20website/Roof%20after.JPG" alt="P2"><div class="project-label">Roof After</div></div><div class="gallery-project-item"><img src="Pic%20of%20website/Roof%20after_2.png" alt="P3"><div class="project-label">Roof After 2</div></div><div class="gallery-project-item"><img src="Pic%20of%20website/Roof%20after_3.JPG" alt="P4"><div class="project-label">Roof After 3</div></div></div></div>
-    </div>
-</div>
-<script>
-function toggleLang(){document.body.classList.toggle("zh");var b=document.querySelector(".lang-switch");b.textContent=document.body.classList.contains("zh")?"EN":"中文"}
-window.addEventListener("scroll",function(){var n=document.getElementById("navbar");if(window.scrollY>20){n.classList.add("scrolled")}else{n.classList.remove("scrolled")}
-var s=document.querySelectorAll("section[id]"),l=window.scrollY+100;s.forEach(function(e){var t=e.offsetTop,h=e.offsetHeight;if(l>=t&&l<t+h){document.querySelectorAll(".nav-link").forEach(function(a){a.classList.remove("active")});var n=document.querySelector('.nav-link[data-section="'+e.id+'"]');if(n)n.classList.add("active")}})})
-function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
-function openWarrantyModal(){document.getElementById("warrantyModal").classList.add("active");document.body.style.overflow="hidden"}
-function closeWarrantyModal(){document.getElementById("warrantyModal").classList.remove("active");document.body.style.overflow=""}
-function openGalleryModal(project){
-    var projects={
-        1:{name:"Project 1 - Roof",before:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20B4_1.JPG"],after:["Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_1.JPG"]},
-        2:{name:"Project 2 - Siding",before:["Pic%20of%20website/Siding%20b4_1.jpg","Pic%20of%20website/siding%20b4_1.jpg"],after:["Pic%20of%20website/Siding%20after_1.jpg","Pic%20of%20website/Siding%20after_2.jpg"]},
-        3:{name:"Project 3 - Gutter",before:["Pic%20of%20website/Gutter_B4.jpg","Pic%20of%20website/gutter%20b4_1.jpg"],after:["Pic%20of%20website/Gutter%20after.jpg","Pic%20of%20website/gutter%20after_1.jpg"]},
-        4:{name:"Project 4 - Roof",before:["Pic%20of%20website/roof%20b4_1.JPG","Pic%20of%20website/roof%20b4_2.JPG"],after:["Pic%20of%20website/roof%20after.JPG","Pic%20of%20website/roof%20after_1.JPG"]}
-    };
-    var p=projects[project]||projects[1];
-    var html='<div class="project-detail"><h3>'+p.name+'</h3><div class="ba-section"><h4>📷 Before</h4><div class="ba-grid">';
-    var beforeLabels=["Before 1","Before 2"];
-    var afterLabels=["After 1","After 2"];
-    for(var i=0;i<p.before.length;i++){html+='<div class="ba-item"><img src="'+p.before[i]+'" alt="'+beforeLabels[i]+'"><div class="ba-label">'+beforeLabels[i]+'</div></div>'}
-    html+='</div></div><div class="ba-section"><h4>✨ After</h4><div class="ba-grid">';
-    for(var i=0;i<p.after.length;i++){html+='<div class="ba-item"><img src="'+p.after[i]+'" alt="'+afterLabels[i]+'"><div class="ba-label">'+afterLabels[i]+'</div></div>'}
-    html+='</div></div></div></div>';
-    document.querySelector("#galleryModal .modal-body").innerHTML=html;
-    document.getElementById("galleryModal").classList.add("active");
-    document.body.style.overflow="hidden";
-    document.querySelector("#galleryModal .modal-header h2 span").textContent=p.name;
-}
-function closeGalleryModal(){document.getElementById("galleryModal").classList.remove("active");document.body.style.overflow=""}
-document.getElementById("warrantyModal").addEventListener("click",function(e){if(e.target===this)closeWarrantyModal()})
-document.getElementById("galleryModal").addEventListener("click",function(e){if(e.target===this)closeGalleryModal()})
-document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeWarrantyModal();closeGalleryModal()}})
-</script>
-</body>
+        <div class="modal-overlay" id="galleryModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>
+                        <span class="en">Select Project</span
+                        ><span class="cn">选择项目</span>
+                    </h2>
+                    <button class="modal-close" onclick="closeGalleryModal()">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="gallery-projects">
+                        <div class="gallery-project-item">
+                            <img
+                                src="Pic%20of%20website/Roof%20B4.JPG"
+                                alt="P1"
+                            />
+                            <div class="project-label">Roof B4</div>
+                        </div>
+                        <div class="gallery-project-item">
+                            <img
+                                src="Pic%20of%20website/Roof%20after.JPG"
+                                alt="P2"
+                            />
+                            <div class="project-label">Roof After</div>
+                        </div>
+                        <div class="gallery-project-item">
+                            <img
+                                src="Pic%20of%20website/Roof%20after_2.png"
+                                alt="P3"
+                            />
+                            <div class="project-label">Roof After 2</div>
+                        </div>
+                        <div class="gallery-project-item">
+                            <img
+                                src="Pic%20of%20website/Roof%20after_3.JPG"
+                                alt="P4"
+                            />
+                            <div class="project-label">Roof After 3</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function toggleLang() {
+                document.body.classList.toggle("zh");
+                var b = document.querySelector(".lang-switch");
+                b.textContent = document.body.classList.contains("zh")
+                    ? "EN"
+                    : "中文";
+            }
+            window.addEventListener("scroll", function () {
+                var n = document.getElementById("navbar");
+                if (window.scrollY > 20) {
+                    n.classList.add("scrolled");
+                } else {
+                    n.classList.remove("scrolled");
+                }
+                var s = document.querySelectorAll("section[id]"),
+                    l = window.scrollY + 100;
+                s.forEach(function (e) {
+                    var t = e.offsetTop,
+                        h = e.offsetHeight;
+                    if (l >= t && l < t + h) {
+                        document
+                            .querySelectorAll(".nav-link")
+                            .forEach(function (a) {
+                                a.classList.remove("active");
+                            });
+                        var n = document.querySelector(
+                            '.nav-link[data-section="' + e.id + '"]',
+                        );
+                        if (n) n.classList.add("active");
+                    }
+                });
+            });
+            function toggleMenu() {
+                document.getElementById("navLinks").classList.toggle("active");
+            }
+            function openWarrantyModal() {
+                document
+                    .getElementById("warrantyModal")
+                    .classList.add("active");
+                document.body.style.overflow = "hidden";
+            }
+            function closeWarrantyModal() {
+                document
+                    .getElementById("warrantyModal")
+                    .classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            function openGalleryModal(project) {
+                var projects = {
+                    1: {
+                        name: "Project Roof",
+                        before: [
+                            "Pic%20of%20website/Roof%20B4.JPG",
+                            "Pic%20of%20website/Roof%20B4_1.JPG",
+                        ],
+                        after: [
+                            "Pic%20of%20website/Roof%20after.JPG",
+                            "Pic%20of%20website/Roof%20after_1.JPG",
+                        ],
+                    },
+                    2: {
+                        name: "Project Siding",
+                        before: [
+                            "Pic%20of%20website/Siding%20b4_1.jpg",
+                            "Pic%20of%20website/siding%20b4_1.jpg",
+                        ],
+                        after: [
+                            "Pic%20of%20website/Siding%20after_1.jpg",
+                            "Pic%20of%20website/Siding%20after_2.jpg",
+                        ],
+                    },
+                    3: {
+                        name: "Project Gutter",
+                        before: [
+                            "Pic%20of%20website/Gutter_B4.jpg",
+                            "Pic%20of%20website/gutter%20b4_1.jpg",
+                        ],
+                        after: [
+                            "Pic%20of%20website/Gutter%20after.jpg",
+                            "Pic%20of%20website/gutter%20after_1.jpg",
+                        ],
+                    },
+                    4: {
+                        name: "Project Roof",
+                        before: [
+                            "Pic%20of%20website/roof%20b4_1.JPG",
+                            "Pic%20of%20website/roof%20b4_2.JPG",
+                        ],
+                        after: [
+                            "Pic%20of%20website/roof%20after.JPG",
+                            "Pic%20of%20website/roof%20after_1.JPG",
+                        ],
+                    },
+                };
+                var p = projects[project] || projects[1];
+                var html =
+                    '<div class="project-detail"><div class="ba-section"><h4>📷 Before</h4><div class="ba-grid">';
+                var beforeLabels = ["Before 1", "Before 2"];
+                var afterLabels = ["After 1", "After 2"];
+                for (var i = 0; i < p.before.length; i++) {
+                    html +=
+                        '<div class="ba-item"><img src="' +
+                        p.before[i] +
+                        '" alt="' +
+                        beforeLabels[i] +
+                        '"><div class="ba-label">' +
+                        beforeLabels[i] +
+                        "</div></div>";
+                }
+                html +=
+                    '</div></div><div class="ba-section"><h4>✨ After</h4><div class="ba-grid">';
+                for (var i = 0; i < p.after.length; i++) {
+                    html +=
+                        '<div class="ba-item"><img src="' +
+                        p.after[i] +
+                        '" alt="' +
+                        afterLabels[i] +
+                        '"><div class="ba-label">' +
+                        afterLabels[i] +
+                        "</div></div>";
+                }
+                html += "</div></div></div></div>";
+                document.querySelector("#galleryModal .modal-body").innerHTML =
+                    html;
+                document.getElementById("galleryModal").classList.add("active");
+                document.body.style.overflow = "hidden";
+                document.querySelector(
+                    "#galleryModal .modal-header h2 span",
+                ).textContent = p.name;
+            }
+            function closeGalleryModal() {
+                document
+                    .getElementById("galleryModal")
+                    .classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            document
+                .getElementById("warrantyModal")
+                .addEventListener("click", function (e) {
+                    if (e.target === this) closeWarrantyModal();
+                });
+            document
+                .getElementById("galleryModal")
+                .addEventListener("click", function (e) {
+                    if (e.target === this) closeGalleryModal();
+                });
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    closeWarrantyModal();
+                    closeGalleryModal();
+                }
+            });
+        </script>
+    </body>
 </html>
