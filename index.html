@@ -99,7 +99,12 @@
         .warranty-label{font-weight:600;color:var(--text-main);min-width:100px}
         .warranty-value{color:var(--text-muted)}
         .warranty-notes{margin-top:20px;padding-top:20px;border-top:1px solid #ddd;font-size:13px;color:var(--text-muted)}
-        .gallery-projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+        .project-detail h3{font-size:24px;text-align:center;margin-bottom:30px;color:var(--primary)}
+.before-after{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.ba-section h4{font-size:18px;text-align:center;margin-bottom:15px;color:var(--text-main)}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ba-item{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.ba-item img{width:100%;height:100%;object-fit:cover}
         .gallery-project-item{border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;position:relative}
         .gallery-project-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease}
         .gallery-project-item:hover img{transform:scale(1.05)}
@@ -199,8 +204,23 @@ function toggleMenu(){document.getElementById("navLinks").classList.toggle("acti
 function openWarrantyModal(){document.getElementById("warrantyModal").classList.add("active");document.body.style.overflow="hidden"}
 function closeWarrantyModal(){document.getElementById("warrantyModal").classList.remove("active");document.body.style.overflow=""}
 function openGalleryModal(project){
-    var projects={1:{images:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_2.png","Pic%20of%20website/Roof%20after_3.JPG"]},2:{images:["Pic%20of%20website/siding%20b4_1.jpg","Pic%20of%20website/siding%20after_1.jpg","Pic%20of%20website/siding%20after_1%20(2).jpg","Pic%20of%20website/siding%20after_1%20(2).jpg"]},3:{images:["Pic%20of%20website/gutter%20b4_1.jpg","Pic%20of%20website/gutter%20b4_2%20(2).jpg","Pic%20of%20website/gutter%20after_1.jpg","Pic%20of%20website/gutter%20after_1%20(2).jpg"]},4:{images:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_2.png","Pic%20of%20website/Roof%20after_3.JPG"]}};
-    var p=projects[project]||projects[1];var html="";for(var i=0;i<p.images.length;i++){html+='<div class="gallery-project-item"><img src="'+p.images[i]+'" alt="P'+(i+1)+'"><div class="project-label">'+(i+1)+'</div></div>'}document.querySelector("#galleryModal .gallery-projects").innerHTML=html;document.getElementById("galleryModal").classList.add("active");document.body.style.overflow="hidden"}
+    var projects={
+        1:{name:"Project 1 - Roof",before:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20B4_1.JPG"],after:["Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_1.JPG"]},
+        2:{name:"Project 2 - Siding",before:["Pic%20of%20website/siding%20b4_1.jpg","Pic%20of%20website/siding%20b4_2.jpg"],after:["Pic%20of%20website/siding%20after_1.jpg","Pic%20of%20website/siding%20after_2.jpg"]},
+        3:{name:"Project 3 - Gutter",before:["Pic%20of%20website/gutter%20b4_1.jpg","Pic%20of%20website/gutter%20b4_2.jpg"],after:["Pic%20of%20website/gutter%20after_1.jpg","Pic%20of%20website/gutter%20after_2.jpg"]},
+        4:{name:"Project 4 - Roof",before:["Pic%20of%20website/roof%20b4_1.JPG","Pic%20of%20website/roof%20b4_2.JPG"],after:["Pic%20of%20website/roof%20after_1.JPG","Pic%20of%20website/roof%20after.JPG"]}
+    };
+    var p=projects[project]||projects[1];
+    var html='<div class="project-detail"><h3>'+p.name+'</h3><div class="before-after"><div class="ba-section"><h4>Before</h4><div class="ba-grid">';
+    for(var i=0;i<p.before.length;i++){html+='<div class="ba-item"><img src="'+p.before[i]+'" alt="Before '+(i+1)+'"></div>'}
+    html+='</div></div><div class="ba-section"><h4>After</h4><div class="ba-grid">';
+    for(var i=0;i<p.after.length;i++){html+='<div class="ba-item"><img src="'+p.after[i]+'" alt="After '+(i+1)+'"></div>'}
+    html+='</div></div></div></div>';
+    document.querySelector("#galleryModal .modal-body").innerHTML=html;
+    document.getElementById("galleryModal").classList.add("active");
+    document.body.style.overflow="hidden";
+    document.querySelector("#galleryModal .modal-header h2 span").textContent=p.name;
+}
 function closeGalleryModal(){document.getElementById("galleryModal").classList.remove("active");document.body.style.overflow=""}
 document.getElementById("warrantyModal").addEventListener("click",function(e){if(e.target===this)closeWarrantyModal()})
 document.getElementById("galleryModal").addEventListener("click",function(e){if(e.target===this)closeGalleryModal()})
