@@ -156,10 +156,10 @@
 <section class="section bg-light" id="gallery">
     <h2 class="section-title"><span class="en">Recent Projects</span><span class="cn">工程案例</span></h2>
     <div class="gallery-grid">
-        <div class="gallery-item" onclick="openGalleryModal()"><img src="Pic%20of%20website/Roof%20B4.JPG" alt="Project 1"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal()"><img src="Pic%20of%20website/Roof%20after.JPG" alt="Project 2"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal()"><img src="Pic%20of%20website/Roof%20after_2.png" alt="Project 3"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
-        <div class="gallery-item" onclick="openGalleryModal()"><img src="Pic%20of%20website/Roof%20after_3.JPG" alt="Project 4"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
+        <div class="gallery-item" onclick="openGalleryModal(1)"><img src="Pic%20of%20website/Roof%20B4.JPG" alt="Project 1"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
+        <div class="gallery-item" onclick="openGalleryModal(1)"><img src="Pic%20of%20website/Roof%20after.JPG" alt="Project 2"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
+        <div class="gallery-item" onclick="openGalleryModal(1)"><img src="Pic%20of%20website/Roof%20after_2.png" alt="Project 3"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
+        <div class="gallery-item" onclick="openGalleryModal(1)"><img src="Pic%20of%20website/Roof%20after_3.JPG" alt="Project 4"><div class="gallery-overlay"><span><span class="en">View Project</span><span class="cn">查看项目</span></span></div></div>
     </div>
 </section>
 <section class="section contact-section" id="contact">
@@ -198,7 +198,9 @@ var s=document.querySelectorAll("section[id]"),l=window.scrollY+100;s.forEach(fu
 function toggleMenu(){document.getElementById("navLinks").classList.toggle("active")}
 function openWarrantyModal(){document.getElementById("warrantyModal").classList.add("active");document.body.style.overflow="hidden"}
 function closeWarrantyModal(){document.getElementById("warrantyModal").classList.remove("active");document.body.style.overflow=""}
-function openGalleryModal(){document.getElementById("galleryModal").classList.add("active");document.body.style.overflow="hidden"}
+function openGalleryModal(project){
+    var projects={1:{title:"Roof Project",images:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_2.png","Pic%20of%20website/Roof%20after_3.JPG"]},2:{title:"Siding Project",images:["Pic%20of%20website/siding%20b4_1.jpg","Pic%20of%20website/siding%20after_1.jpg","Pic%20of%20website/siding%20after_1%20(2).jpg","Pic%20of%20website/siding%20after_1%20(2).jpg"]},3:{title:"Roof Project 2",images:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_2.png","Pic%20of%20website/Roof%20after_3.JPG"]},4:{title:"Roof Project 3",images:["Pic%20of%20website/Roof%20B4.JPG","Pic%20of%20website/Roof%20after.JPG","Pic%20of%20website/Roof%20after_2.png","Pic%20of%20website/Roof%20after_3.JPG"]}};
+    var p=projects[project]||projects[1];var html="";for(var i=0;i<p.images.length;i++){html+='<div class="gallery-project-item"><img src="'+p.images[i]+'" alt="P'+(i+1)+'"><div class="project-label">'+(i+1)+'</div></div>'}document.querySelector("#galleryModal .gallery-projects").innerHTML=html;document.getElementById("galleryModal").classList.add("active");document.body.style.overflow="hidden"}
 function closeGalleryModal(){document.getElementById("galleryModal").classList.remove("active");document.body.style.overflow=""}
 document.getElementById("warrantyModal").addEventListener("click",function(e){if(e.target===this)closeWarrantyModal()})
 document.getElementById("galleryModal").addEventListener("click",function(e){if(e.target===this)closeGalleryModal()})
