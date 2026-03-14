@@ -23,7 +23,7 @@
                     body:not(.zh) .cn{display:none!important}
                     .lang-switch{background:transparent;border:1px solid var(--primary);color:var(--primary);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:500;font-size:12px;margin-left:15px;transition:all 0.3s ease}
                     .lang-switch:hover{background:var(--primary);color:white}
-                    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
+                    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:#000000;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
                     .navbar.scrolled{padding:10px 5%;box-shadow:var(--shadow-elevated)}
                     .navbar .logo{display:flex;align-items:center;gap:12px}
                     .navbar .logo img{height:50px;width:auto;object-fit:contain}
@@ -35,7 +35,7 @@
                     .nav-links a:hover,.nav-links a.active{background:var(--primary);color:white}
                     .nav-links .btn-quote{background:var(--accent);color:var(--primary);padding:10px 20px;border-radius:25px;font-weight:600;margin-left:10px}
                     .nav-links .btn-quote:hover,.nav-links .btn-quote.active{background:var(--primary);color:white}
-                    .menu-toggle{display:none;background:none;border:none;font-size:24px;color:var(--primary);cursor:pointer}
+                    .menu-toggle{display:none;background:none;border:none;font-size:24px;color:#ffffff;cursor:pointer}
                     .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.5)),url("Pic%20of%20website/Pic_Home.png") center/cover no-repeat}
                     .hero-content{max-width:800px;color:white}
                     .hero-content h1{font-size:clamp(32px,5vw,56px);font-weight:700;line-height:1.1;margin-bottom:20px;letter-spacing:-0.03em}
@@ -105,12 +105,12 @@
                     .warranty-label{font-weight:600;color:var(--text-main);min-width:100px}
                     .warranty-value{color:var(--text-muted)}
                     .warranty-notes{margin-top:20px;padding-top:20px;border-top:1px solid #ddd;font-size:13px;color:var(--text-muted)}
-                    .project-detail h3{font-size:28px;text-align:center;margin-bottom:25px;color:var(--primary);font-weight:700}
+                    .project-detail h3{font-size:28px;text-align:center;margin-bottom:25px;font-weight:700}
             .ba-section{background:#f8f8f8;border-radius:16px;padding:0px;margin-bottom:30px}
             .ba-section h4{font-size:22px;text-align:left;margin-bottom:20px;color:var(--primary);font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--accent)}
-            .ba-grid{display:grid;grid-template-columns:1fr;gap:20px}
-            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}.ba-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);color:white;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:500}
-            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}
+            .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}.ba-label{position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.7);color:white;padding:5px 12px;border-radius:6px;font-size:13px;font-weight:500}
+            .ba-item{border-radius:6px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform 0.3s;position:relative}
             .ba-item:hover{transform:scale(1.02)}
             .ba-item img{width:100%;height:100%;object-fit:cover}
                     .gallery-project-item{border-radius:16px;overflow:hidden;cursor:pointer;position:relative}
@@ -126,13 +126,10 @@
         <nav class="navbar" id="navbar">
             <div class="logo">
                 <img
-                    src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                    src="Pic%20of%20website/logo.png"
                     alt="FLYING LAP LTD."
                 />
-                <div class="logo-text">
-                    <span class="logo-main">FLYING LAP</span
-                    ><span class="logo-sub">LTD.</span>
-                </div>
+                
             </div>
             <button class="menu-toggle" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
@@ -220,7 +217,7 @@
                                 climate.</span
                             ><span class="cn"
                                 >专业安装与维修，采用优质 Class 3 或 Class 4
-                                等级抗冲击瓦片。专为阿省恶劣气候设计。</span
+                                等级瓦片。专为阿省恶劣气候设计。</span
                             >
                         </p>
                     </div>
@@ -410,38 +407,38 @@
             <div class="gallery-grid">
                 <div class="gallery-item" onclick="openGalleryModal(1)">
                     <img
-                        src="Pic%20of%20website/Roof%20B4.JPG"
+                        src="Pic%20of%20website/front.jpg"
                         alt="Project 1"
                     />
                     <div class="gallery-overlay">
-                        <span>Project 1 - Roof</span>
+                        <span>Roofing</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(2)">
                     <img
-                        src="Pic%20of%20website/Siding%20b4_1.jpg"
+                        src="Pic%20of%20website/front%20.png"
                         alt="Project 2"
                     />
                     <div class="gallery-overlay">
-                        <span>Project 2 - Siding</span>
+                        <span>Siding</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(3)">
                     <img
-                        src="Pic%20of%20website/Gutter_B4.jpg"
+                        src="Pic%20of%20website/front%20(2).jpg"
                         alt="Project 3"
                     />
                     <div class="gallery-overlay">
-                        <span>Project 3 - Gutter</span>
+                        <span>Guttering</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(4)">
                     <img
-                        src="Pic%20of%20website/roof%20b4_1.JPG"
+                        src="Pic%20of%20website/front%20(3).jpg"
                         alt="Project 4"
                     />
                     <div class="gallery-overlay">
-                        <span>Project 4 - Roof</span>
+                        <span>Full Renovation</span>
                     </div>
                 </div>
             </div>
@@ -471,7 +468,7 @@
                 <div class="footer-about">
                     <div class="logo-wrapper">
                         <img
-                            src="Gemini_Generated_Image_t1qemrt1qemrt1qe.png"
+                            src="Pic%20of%20website/logo.png"
                             alt="Flying Lap Ltd. Logo"
                         />
                     </div>
@@ -543,8 +540,8 @@
                 <div class="modal-body">
                     <div class="warranty-modal-item">
                         <h3>
-                            <span class="en">Material</span
-                            ><span class="cn">材料质保</span>
+                            <span class="en">* Material</span
+                            ><span class="cn">* 材料质保</span>
                             <span class="badge">PREMIUM</span>
                         </h3>
                         <div class="warranty-info-row">
@@ -553,10 +550,10 @@
                                 ><span class="cn">覆盖范围</span>:</span
                             ><span class="warranty-value"
                                 ><span class="en"
-                                    >Impact-Resistant Shingles, Siding & Gutter
+                                    >Shingles, Siding & Gutter
                                     Materials</span
                                 ><span class="cn"
-                                    >抗冲击瓦片、外墙及雨水槽型材</span
+                                    >瓦片、外墙及雨水槽型材</span
                                 ></span
                             >
                         </div>
@@ -573,8 +570,8 @@
                     <div class="warranty-modal-item">
                         <h3>
                             <span class="en"
-                                >Workmanship (Roofing & Windows)</span
-                            ><span class="cn">施工质保 (屋顶及门窗)</span>
+                                >** Workmanship (Roofing & Windows)</span
+                            ><span class="cn">** 施工质保 (屋顶及门窗)</span>
                             <span class="badge">EXPERT</span>
                         </h3>
                         <div class="warranty-info-row">
@@ -601,8 +598,8 @@
                     </div>
                     <div class="warranty-modal-item">
                         <h3>
-                            <span class="en">Workmanship (Gutter & Siding)</span
-                            ><span class="cn">施工质保 (雨水槽及外墙)</span>
+                            <span class="en">** Workmanship (Gutter & Siding)</span
+                            ><span class="cn">** 施工质保 (雨水槽及外墙)</span>
                             <span class="badge">GUARANTEED</span>
                         </h3>
                         <div class="warranty-info-row">
@@ -656,7 +653,7 @@
                     <div class="gallery-projects">
                         <div class="gallery-project-item">
                             <img
-                                src="Pic%20of%20website/Roof%20B4.JPG"
+                                src="Pic%20of%20website/front.jpg"
                                 alt="P1"
                             />
                             <div class="project-label">Roof B4</div>
@@ -737,7 +734,9 @@
             function openGalleryModal(project) {
                 var projects = {
                     1: {
-                        name: "Project Roof",
+                        name: "Roofing Project",
+                        workscope: "Replace ridges & valleys - 200LF\nReplace damaged shingles - 5SQ\n\nTotal: CAD $8,000",
+                        price: "CAD $8,000",
                         before: [
                             "Pic%20of%20website/Roof%20B4.JPG",
                             "Pic%20of%20website/Roof%20B4_1.JPG",
@@ -748,7 +747,9 @@
                         ],
                     },
                     2: {
-                        name: "Project Siding",
+                        name: "Siding Project",
+                        workscope: "Replace vinyl siding - 1300 SF\nRepair 3 window frames\n\nTotal: CAD $12,000",
+                        price: "CAD $12,000",
                         before: [
                             "Pic%20of%20website/Siding%20b4_1.jpg",
                             "Pic%20of%20website/siding%20b4_1.jpg",
@@ -759,7 +760,9 @@
                         ],
                     },
                     3: {
-                        name: "Project Gutter",
+                        name: "Guttering Project",
+                        workscope: "Replace gutters & downspouts - 250LF\n\nTotal: CAD $5,000",
+                        price: "CAD $5,000",
                         before: [
                             "Pic%20of%20website/Gutter_B4.jpg",
                             "Pic%20of%20website/gutter%20b4_1.jpg",
@@ -770,45 +773,50 @@
                         ],
                     },
                     4: {
-                        name: "Project Roof",
+                        name: "Full Renovation",
+                        workscope: "Roof - 13 SQ\nSiding - 1300 SF\nGutters - 250LF\nWindow repairs - 3\n\nTotal: CAD $19,000",
+                        price: "CAD $19,000",
                         before: [
-                            "Pic%20of%20website/roof%20b4_1.JPG",
-                            "Pic%20of%20website/roof%20b4_2.JPG",
+                            "Pic%20of%20website/siding%20b4_1%20(2).jpg",
+                            "Pic%20of%20website/siding%20b4_1.jpg",
                         ],
                         after: [
-                            "Pic%20of%20website/Roof%20after.JPG",
-                            "Pic%20of%20website/Roof%20after_2.JPG",
+                            "Pic%20of%20website/siding%20after_1%20(2).jpg",
+                            "Pic%20of%20website/siding%20after_1.jpg",
                         ],
                     },
                 };
                 var p = projects[project] || projects[1];
-                var html =
-                    '<div class="project-detail"><div class="ba-section"><h4>📷 Before</h4><div class="ba-grid">';
-                var beforeLabels = ["Before 1", "Before 2"];
-                var afterLabels = ["After 1", "After 2"];
-                for (var i = 0; i < p.before.length; i++) {
-                    html +=
-                        '<div class="ba-item"><img src="' +
-                        p.before[i] +
-                        '" alt="' +
-                        beforeLabels[i] +
-                        '"><div class="ba-label">' +
-                        beforeLabels[i] +
-                        "</div></div>";
-                }
-                html +=
-                    '</div></div><div class="ba-section"><h4>✨ After</h4><div class="ba-grid">';
-                for (var i = 0; i < p.after.length; i++) {
-                    html +=
-                        '<div class="ba-item"><img src="' +
-                        p.after[i] +
-                        '" alt="' +
-                        afterLabels[i] +
-                        '"><div class="ba-label">' +
-                        afterLabels[i] +
-                        "</div></div>";
-                }
-                html += "</div></div></div></div>";
+                var html = '<div class="project-detail" style="max-width:900px;margin:0 auto;">';
+                
+                // Header with title and price
+                html += '<div style="text-align:center;margin-bottom:25px;padding:20px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;color:white;">';
+                html += '<h3 style="margin:0 0 12px 0;font-size:26px;">' + p.name + '</h3>';
+                html += '<p style="margin:0;font-size:28px;font-weight:700;color:#4CAF50;">' + (p.price || 'Contact for quote') + '</p>';
+                html += '</div>';
+                
+                // Work details
+                html += '<div style="background:#f8f8f8;border-radius:12px;padding:20px;margin-bottom:25px;">';
+                html += '<h4 style="margin:0 0 15px 0;color:var(--primary);font-size:18px;">📋 Work Details</h4>';
+                html += '<p style="margin:0;font-size:14px;line-height:1.8;color:#4CAF50;font-weight:600;white-space:pre-line;">' + (p.workscope || '') + '</p>';
+                html += '</div>';
+                
+                // Side-by-side Before & After
+                html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#222;border-radius:12px;overflow:hidden;">';
+                
+                // BEFORE
+                html += '<div style="position:relative;background:#333;">';
+                html += '<img src="' + (p.before[0] || p.before[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="Before">';
+                html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:#ff6b6b;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">BEFORE</div>';
+                html += '</div>';
+                
+                // AFTER  
+                html += '<div style="position:relative;background:#333;">';
+                html += '<img src="' + (p.after[0] || p.after[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="After">';
+                html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(76,175,80,0.95);color:white;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">AFTER</div>';
+                html += '</div>';
+                
+                
                 document.querySelector("#galleryModal .modal-body").innerHTML =
                     html;
                 document.getElementById("galleryModal").classList.add("active");
