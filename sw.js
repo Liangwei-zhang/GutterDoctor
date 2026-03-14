@@ -1,9 +1,11 @@
 // Service Worker for GutterDoctor - Offline caching
-const CACHE_NAME = 'gutterdoctor-v1';
+const CACHE_NAME = 'gutterdoctor-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/Gemini_Generated_Image_t1qemrt1qemrt1qe.png',
+  '/css/style.css',
+  '/js/script.js',
+  '/Pic of website/logo.png',
   '/Pic of website/Pic_Home.png'
 ];
 

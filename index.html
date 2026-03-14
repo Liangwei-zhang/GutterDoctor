@@ -4,6 +4,32 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>FLYING LAP LTD. | Gutters | Siding | Roofing | Calgary</title>
+        
+        <!-- SEO Meta Tags -->
+        <meta name="description" content="Calgary's premier exterior specialists: roofing, siding, gutters, windows & doors. Licensed & insured with $5M CGL. Free estimates. Call 825.986.2614" />
+        <meta name="keywords" content="Calgary roofing, gutters Calgary, siding contractors, window replacement, home exterior, Alberta roofing, Flying Lap Ltd." />
+        <meta name="author" content="FLYING LAP LTD." />
+        <meta name="robots" content="index, follow" />
+        <meta name="geo.region" content="CA-AB" />
+        <meta name="geo.placename" content="Calgary" />
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://flyinglap.ca/" />
+        <meta property="og:title" content="FLYING LAP LTD. | Calgary Exterior Experts" />
+        <meta property="og:description" content="Professional roofing, siding, gutters & windows. Free estimates. Call 825.986.2614" />
+        <meta property="og:image" content="https://flyinglap.ca/Pic%20of%20website/Pic_Home.png" />
+        
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="FLYING LAP LTD. | Calgary Exterior Experts" />
+        <meta name="twitter:description" content="Professional roofing, siding, gutters & windows. Free estimates." />
+        
+        <!-- Canonical URL -->
+        <link rel="canonical" href="https://flyinglap.ca/" />
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="Pic%20of%20website/logo.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -199,7 +225,7 @@
             </p>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing" />
+                    <img loading="lazy" src="Pic%20of%20website/Pic_Roof.JPG" alt="Roofing" />
                     <div class="service-content">
                         <h3>
                             <span class="en">Roofing Systems</span
@@ -223,7 +249,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="Pic%20of%20website/Pic_siding.jpg" alt="Siding" />
+                    <img loading="lazy" src="Pic%20of%20website/Pic_siding.jpg" alt="Siding" />
                     <div class="service-content">
                         <h3>
                             <span class="en">Siding Solutions</span
@@ -270,7 +296,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="Pic%20of%20website/Pic_win.jpg" alt="Windows" />
+                    <img loading="lazy" src="Pic%20of%20website/Pic_win.jpg" alt="Windows" />
                     <div class="service-content">
                         <h3>
                             <span class="en">Windows & Doors</span
@@ -461,6 +487,33 @@
                     <i class="fa-solid fa-location-dot"></i>
                     <p>12 Panora Way NW, Calgary T3K 0R3</p>
                 </div>
+            </div>
+            
+            <!-- Quote Form -->
+            <div class="quote-form-wrapper" style="max-width:600px;margin:40px auto 0;padding:30px;background:rgba(255,255,255,0.1);border-radius:20px;">
+                <h3 style="margin-bottom:20px;color:white;text-align:center;">
+                    <span class="en">Request a Free Quote</span>
+                    <span class="cn">索取免費報價</span>
+                </h3>
+                <form id="quoteForm" style="display:grid;gap:15px;">
+                    <input type="text" name="name" placeholder="Your Name / 您的姓名" required style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
+                    <input type="tel" name="phone" placeholder="Phone Number / 電話" required style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
+                    <input type="email" name="email" placeholder="Email / 郵箱" style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
+                    <select name="service" required style="padding:14px;border-radius:10px;border:none;font-size:14px;">
+                        <option value="">Select Service / 選擇服務</option>
+                        <option value="roofing">Roofing / 屋頂</option>
+                        <option value="siding">Siding / 外牆</option>
+                        <option value="gutters">Gutters / 排水槽</option>
+                        <option value="windows">Windows & Doors / 門窗</option>
+                        <option value="other">Other / 其他</option>
+                    </select>
+                    <textarea name="message" rows="4" placeholder="Project Details / 項目詳情" style="padding:14px;border-radius:10px;border:none;font-size:14px;resize:vertical;"></textarea>
+                    <button type="submit" class="btn-quote" style="background:var(--accent);color:var(--primary);padding:16px;border-radius:25px;font-weight:600;font-size:16px;border:none;cursor:pointer;transition:all 0.3s;">
+                        <span class="en">Submit Request</span>
+                        <span class="cn">提交申請</span>
+                    </button>
+                </form>
+                <div id="formResponse" style="margin-top:15px;text-align:center;display:none;"></div>
             </div>
         </section>
         <footer class="footer">
@@ -684,6 +737,34 @@
             </div>
         </div>
         <script>
+            // Quote Form Handler
+            document.getElementById('quoteForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = this;
+                var response = document.getElementById('formResponse');
+                var btn = form.querySelector('button[type="submit"]');
+                
+                // Collect form data
+                var formData = new FormData(form);
+                var data = Object.fromEntries(formData.entries());
+                
+                // Show loading state
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                
+                // Simulate form submission (replace with actual endpoint)
+                setTimeout(function() {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(76,175,80,0.2);color:#4CAF50;padding:15px;border-radius:10px;">' +
+                        '<i class="fas fa-check-circle"></i> Thank you! We will contact you within 24 hours.<br/>' +
+                        '<span style="font-size:12px;opacity:0.8;">謝謝！我們會在24小時內與您聯繫。</span>' +
+                        '</div>';
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="en">Submit Request</span><span class="cn">提交申請</span>';
+                }, 1500);
+            });
+            
             function toggleLang() {
                 document.body.classList.toggle("zh");
                 var b = document.querySelector(".lang-switch");
@@ -806,13 +887,13 @@
                 
                 // BEFORE
                 html += '<div style="position:relative;background:#333;">';
-                html += '<img src="' + (p.before[0] || p.before[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="Before">';
+                html += '<img loading="lazy" src="' + (p.before[0] || p.before[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="Before">';
                 html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:#ff6b6b;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">BEFORE</div>';
                 html += '</div>';
                 
                 // AFTER  
                 html += '<div style="position:relative;background:#333;">';
-                html += '<img src="' + (p.after[0] || p.after[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="After">';
+                html += '<img loading="lazy" src="' + (p.after[0] || p.after[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="After">';
                 html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(76,175,80,0.95);color:white;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">AFTER</div>';
                 html += '</div>';
                 
