@@ -11,10 +11,10 @@ PORT = 5000
 
 class CacheHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
-        # Cache images for 1 year (31536000 seconds)
+        # Cache images for 1 week
         if self.path.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.ico')):
-            self.send_header('Cache-Control', 'public, max-age=31536000')
-            self.send_header('Expires', (datetime.now() + timedelta(days=365)).strftime('%a, %d %b %Y %H:%M:%S GMT'))
+            self.send_header('Cache-Control', 'public, max-age=604800')
+            self.send_header('Expires', (datetime.now() + timedelta(days=7)).strftime('%a, %d %b %Y %H:%M:%S GMT'))
         # Cache CSS/JS for 1 week
         elif self.path.lower().endswith(('.css', '.js', '.woff', '.woff2', '.ttf', '.eot')):
             self.send_header('Cache-Control', 'public, max-age=604800')

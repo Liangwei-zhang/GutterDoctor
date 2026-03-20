@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - FLYING LAP LTD.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1d3d20;
+            --accent: #d2b48c;
+            --danger: #dc3545;
+            --success: #28a745;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f5f7;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 { font-size: 24px; }
+        .btn-logout {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        /* Login Form */
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 400px;
+            margin: 100px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .login-box input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        .login-box button {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .login-box button:hover { background: #2a5230; }
+        .error { color: var(--danger); margin-bottom: 15px; display: none; }
+        
+        /* Orders Table */
+        .orders-box {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: none;
+            overflow-x: auto;
+        }
+        .orders-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+        }
+        .orders-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .orders-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .orders-table tr:hover { background: #f9f9f9; }
+        .order-id { 
+            font-family: monospace; 
+            background: #f0f0f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .order-service {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .order-date {
+            color: #666;
+            font-size: 13px;
+        }
+        .order-message {
+            max-height: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .order-message:hover {
+            background: #f0f0f0;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            max-height: 70vh;
+            overflow-y: auto;
+            word-break: break-word;
+        }
+        .modal h3 { margin-bottom: 15px; color: var(--primary); }
+        .modal-close {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <div class="login-box" id="loginBox">
+            <h2>🔐 Admin Login</h2>
+            <div class="error" id="errorMsg">Incorrect password</div>
+            <input type="password" id="password" placeholder="Password" />
+            <button onclick="login()">Login</button>
+        </div>
+        
+        <!-- Orders List -->
+        <div class="orders-box" id="ordersBox">
+            <div class="header">
+                <h1>📋 Orders</h1>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Service</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody">
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Message Modal -->
+        <div class="modal" id="msgModal">
+            <div class="modal-content">
+                <h3>📝 Message</h3>
+                <div id="msgContent"></div>
+                <button class="modal-close" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const password = localStorage.getItem('admin_pwd') || '';
+        
+        if (password === '1q2w3e4r') {
+            showOrders();
+        }
+        
+        function login() {
+            const pwd = document.getElementById('password').value;
+            if (pwd === '1q2w3e4r') {
+                localStorage.setItem('admin_pwd', pwd);
+                showOrders();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('admin_pwd');
+            location.reload();
+        }
+        
+        function showOrders() {
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('ordersBox').style.display = 'block';
+            loadOrders();
+        }
+        
+        function loadOrders() {
+            fetch('/api/orders?password=1q2w3e4r')
+                .then(res => res.json())
+                .then(orders => {
+                    // Sort by date descending
+                    orders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                    
+                    const tbody = document.getElementById('ordersBody');
+                    if (orders.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="7" class="empty">No orders yet</td></tr>';
+                        return;
+                    }
+                    tbody.innerHTML = orders.map((o, idx) => `
+                        <tr>
+                            <td class="order-date">${o.created_at}</td>
+                            <td>${o.name || '-'}</td>
+                            <td>${o.phone || '-'}</td>
+                            <td>${o.email || '-'}</td>
+                            <td><span class="order-service">${o.service || '-'}</span></td>
+                            <td><div class="order-message" data-msg="${encodeURIComponent(o.message || '')}" onclick="showMessage(${idx})">${o.message || '-'}</div></td>
+                        </tr>
+                    `).join('');
+                    
+                    // Store orders globally for modal
+                    window.ordersData = orders;
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        }
+        
+        function showMessage(idx) {
+            const msg = window.ordersData[idx]?.message || '-';
+            document.getElementById('msgContent').textContent = msg;
+            document.getElementById('msgModal').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('msgModal').classList.remove('active');
+        }
+        
+        // Enter key to login
+        document.getElementById('password').addEventListener('keypress', e => {
+            if (e.key === 'Enter') login();
+        });
+    </script>
+</body>
+</html>

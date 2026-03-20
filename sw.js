@@ -1,15 +1,11 @@
-// Service Worker for GutterDoctor - Offline caching
-const CACHE_NAME = 'gutterdoctor-v2';
+// Service Worker for GutterDoctor - Limited caching
+const CACHE_NAME = 'gutterdoctor-v3';
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/css/style.css',
-  '/js/script.js',
-  '/Pic of website/logo.png',
-  '/Pic of website/Pic_Home.png'
+  '/index.html'
 ];
 
-// Install event - cache assets
+// Install event - cache only essential assets
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -17,27 +13,16 @@ self.addEventListener('install', event => {
   );
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network first, cache only for offline
 self.addEventListener('fetch', event => {
+  // Skip cross-origin requests (like fonts)
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Return cached version or fetch from network
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then(response => {
-          // Don't cache non-successful responses
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
-          }
-          // Clone and cache the response
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put(event.request, responseToCache));
-          return response;
-        });
-      })
+    fetch(event.request)
+      .catch(() => caches.match(event.request))
   );
 });
 

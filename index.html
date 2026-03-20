@@ -29,7 +29,7 @@
         <link rel="canonical" href="https://flyinglap.ca/" />
         
         <!-- Favicon -->
-        <link rel="icon" type="image/png" href="Pic%20of%20website/logo.png" />
+        <link rel="icon" type="image/png" href="Pic%20of%20website/logo1.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -49,8 +49,8 @@
                     body:not(.zh) .cn{display:none!important}
                     .lang-switch{background:transparent;border:1px solid var(--primary);color:var(--primary);padding:8px 16px;border-radius:20px;cursor:pointer;font-weight:500;font-size:12px;margin-left:15px;transition:all 0.3s ease}
                     .lang-switch:hover{background:var(--primary);color:white}
-                    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:#000000;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
-                    .navbar.scrolled{padding:10px 5%;box-shadow:var(--shadow-elevated)}
+                    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--primary);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;transition:var(--transition-apple)}
+                    .navbar.scrolled{background:var(--primary);padding:10px 5%;box-shadow:var(--shadow-elevated)}
                     .navbar .logo{display:flex;align-items:center;gap:12px}
                     .navbar .logo img{height:50px;width:auto;object-fit:contain}
                     .navbar .logo-text{display:flex;flex-direction:column;line-height:1.2}
@@ -113,15 +113,14 @@
                     .footer-links a{color:#999;text-decoration:none;font-size:14px;transition:color 0.3s}
                     .footer-links a:hover{color:white}
                     .footer-bottom{text-align:center;padding-top:40px;margin-top:40px;border-top:1px solid #333;font-size:14px;color:#666}
-                    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;transition:opacity 0.3s ease}
-                    .modal-overlay.active{display:flex;opacity:1}
-                    .modal-content{background:white;border-radius:20px;max-width:100%;width:100%;max-height:100vh;padding:0;margin:0;overflow-y:auto};overflow-y:auto;position:relative;transform:scale(0.9);transition:transform 0.3s ease}
-                    .modal-overlay.active .modal-content{transform:scale(1)}
-                    .modal-header{padding:25px 30px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-                    .modal-header h2{font-size:24px;font-weight:700;color:var(--primary)}
-                    .modal-close{background:none;border:none;font-size:28px;cursor:pointer;color:var(--text-muted);transition:color 0.3s}
-                    .modal-close:hover{color:var(--primary)}
-                    .modal-body{padding:5px}
+                    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:none;z-index:2000;opacity:0;transition:opacity 0.3s ease}
+                    .modal-overlay.active{display:block;opacity:1}
+                    .modal-content{background:white;width:100%;height:100%;padding:0;margin:0;overflow-y:auto;border-radius:0;position:relative}
+                    .modal-header{padding:20px 30px;background:var(--primary);color:white;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+                    .modal-header h2{font-size:24px;font-weight:700;color:white}
+                    .modal-close{background:none;border:none;font-size:32px;cursor:pointer;color:white;transition:color 0.3s;line-height:1}
+                    .modal-close:hover{color:var(--accent)}
+                    .modal-body{padding:0px}
                     .warranty-modal-item{background:var(--bg-light);border-radius:16px;padding:25px;margin-bottom:20px}
                     .warranty-modal-item:last-child{margin-bottom:0}
                     .warranty-modal-item h3{font-size:18px;font-weight:700;color:var(--primary);margin-bottom:15px;display:flex;align-items:center;gap:10px}
@@ -131,7 +130,21 @@
                     .warranty-label{font-weight:600;color:var(--text-main);min-width:100px}
                     .warranty-value{color:var(--text-muted)}
                     .warranty-notes{margin-top:20px;padding-top:20px;border-top:1px solid #ddd;font-size:13px;color:var(--text-muted)}
-                    .project-detail h3{font-size:28px;text-align:center;margin-bottom:25px;font-weight:700}
+                    .project-detail h3{font-size:32px;text-align:center;margin:20px 0;font-weight:700;color:white}
+                    .project-detail{width:100%;height:100%;overflow-y:auto}
+                    .project-detail .price-box{text-align:center;background:linear-gradient(135deg,#1a1a2e,#16213e);padding:25px 20px;margin:0;color:white;width:100%}
+                    .project-detail .price-box .price{font-size:36px;font-weight:700;color:#4CAF50}
+                    .project-detail .workscope-box{background:#f8f8f8;padding:20px;margin:0;width:100%}
+                    .project-detail .workscope-box h4{font-size:20px;color:var(--primary);margin-bottom:15px}
+                    .project-detail .workscope-box p{font-size:16px;line-height:1.8;color:#333;white-space:pre-line}
+                    .project-detail .image-section{margin-bottom:30px}
+                    .project-detail .image-section h4{font-size:24px;color:var(--primary);margin-bottom:20px;text-align:center}
+                    .project-detail .image-section{width:100%}
+                    .project-detail .ba-grid{display:block;margin:0;padding:0}
+                    .project-detail .ba-grid > div{margin-bottom:5px}
+                    .project-detail .ba-grid img{width:100%;height:auto;display:block;border-radius:0;max-height:none;object-fit:fill;background:#000}
+                    .project-detail .ba-grid .label{position:absolute;bottom:15px;right:15px;background:rgba(0,0,0,0.8);color:white;padding:8px 20px;border-radius:8px;font-size:14px;font-weight:600}
+                    .project-detail .ba-grid > div{position:relative;overflow:hidden}
             .ba-section{background:#f8f8f8;border-radius:16px;padding:0px;margin-bottom:30px}
             .ba-section h4{font-size:22px;text-align:left;margin-bottom:20px;color:var(--primary);font-weight:600;padding-bottom:12px;border-bottom:2px solid var(--accent)}
             .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -152,7 +165,7 @@
         <nav class="navbar" id="navbar">
             <div class="logo">
                 <img
-                    src="Pic%20of%20website/logo.png"
+                    src="Pic%20of%20website/logo1.png"
                     alt="FLYING LAP LTD."
                 />
                 
@@ -433,7 +446,7 @@
             <div class="gallery-grid">
                 <div class="gallery-item" onclick="openGalleryModal(1)">
                     <img
-                        src="Pic%20of%20website/front.jpg"
+                        src="1/front.jpg"
                         alt="Project 1"
                     />
                     <div class="gallery-overlay">
@@ -490,27 +503,27 @@
             </div>
             
             <!-- Quote Form -->
-            <div class="quote-form-wrapper" style="max-width:600px;margin:40px auto 0;padding:30px;background:rgba(255,255,255,0.1);border-radius:20px;">
+            <div class="quote-form-wrapper" style="max-width:600px;margin:40px auto 0;padding:30px;background:rgba(255,255,255,0.1);border-radius:20px;max-height:80vh;overflow-y:auto;">
                 <h3 style="margin-bottom:20px;color:white;text-align:center;">
-                    <span class="en">Request a Free Quote</span>
-                    <span class="cn">索取免費報價</span>
+                    <span class="en">Contact Us</span>
+                    <span class="cn">联系我们</span>
                 </h3>
                 <form id="quoteForm" style="display:grid;gap:15px;">
-                    <input type="text" name="name" placeholder="Your Name / 您的姓名" required style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
-                    <input type="tel" name="phone" placeholder="Phone Number / 電話" required style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
-                    <input type="email" name="email" placeholder="Email / 郵箱" style="padding:14px;border-radius:10px;border:none;font-size:14px;" />
-                    <select name="service" required style="padding:14px;border-radius:10px;border:none;font-size:14px;">
-                        <option value="">Select Service / 選擇服務</option>
-                        <option value="roofing">Roofing / 屋頂</option>
-                        <option value="siding">Siding / 外牆</option>
-                        <option value="gutters">Gutters / 排水槽</option>
-                        <option value="windows">Windows & Doors / 門窗</option>
-                        <option value="other">Other / 其他</option>
-                    </select>
-                    <textarea name="message" rows="4" placeholder="Project Details / 項目詳情" style="padding:14px;border-radius:10px;border:none;font-size:14px;resize:vertical;"></textarea>
+                    <span class="en"><input type="text" name="name" placeholder="Your Name" required maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    <span class="cn"><input type="text" name="name" placeholder="您的姓名" required maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    
+                    <span class="en"><input type="tel" name="phone" placeholder="Phone Number" required maxlength="20" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    <span class="cn"><input type="tel" name="phone" placeholder="电话" required maxlength="20" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    
+                    <span class="en"><input type="email" name="email" placeholder="Email" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    <span class="cn"><input type="email" name="email" placeholder="邮箱" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    
+                    <span class="en"><textarea name="message" rows="2" placeholder="Project Details" maxlength="1000" style="padding:14px;border-radius:10px;border:none;font-size:14px;resize:vertical;max-height:50px;overflow-y:auto;width:100%;"></textarea></span>
+                    <span class="cn"><textarea name="message" rows="2" placeholder="项目详情" maxlength="1000" style="padding:14px;border-radius:10px;border:none;font-size:14px;resize:vertical;max-height:50px;overflow-y:auto;width:100%;"></textarea></span>
+                    
+                    <input type="hidden" name="service" value="" />
                     <button type="submit" class="btn-quote" style="background:var(--accent);color:var(--primary);padding:16px;border-radius:25px;font-weight:600;font-size:16px;border:none;cursor:pointer;transition:all 0.3s;">
-                        <span class="en">Submit Request</span>
-                        <span class="cn">提交申請</span>
+                        <span class="en">Send Message</span><span class="cn">发送信息</span>
                     </button>
                 </form>
                 <div id="formResponse" style="margin-top:15px;text-align:center;display:none;"></div>
@@ -521,7 +534,7 @@
                 <div class="footer-about">
                     <div class="logo-wrapper">
                         <img
-                            src="Pic%20of%20website/logo.png"
+                            src="Pic%20of%20website/logo1.png"
                             alt="Flying Lap Ltd. Logo"
                         />
                     </div>
@@ -743,26 +756,51 @@
                 var form = this;
                 var response = document.getElementById('formResponse');
                 var btn = form.querySelector('button[type="submit"]');
+                var isZh = document.body.classList.contains('zh');
                 
-                // Collect form data
-                var formData = new FormData(form);
-                var data = Object.fromEntries(formData.entries());
+                // Collect form data - only visible fields
+                var formData = new FormData();
+                var nameField = isZh ? form.querySelector('span.cn input[name="name"]') : form.querySelector('span.en input[name="name"]');
+                var phoneField = isZh ? form.querySelector('span.cn input[name="phone"]') : form.querySelector('span.en input[name="phone"]');
+                var emailField = isZh ? form.querySelector('span.cn input[name="email"]') : form.querySelector('span.en input[name="email"]');
+                var msgField = isZh ? form.querySelector('span.cn textarea[name="message"]') : form.querySelector('span.en textarea[name="message"]');
+                
+                formData.append('name', nameField ? nameField.value : '');
+                formData.append('phone', phoneField ? phoneField.value : '');
+                formData.append('email', emailField ? emailField.value : '');
+                formData.append('message', msgField ? msgField.value : '');
+                formData.append('service', '');
                 
                 // Show loading state
                 btn.disabled = true;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
-                // Simulate form submission (replace with actual endpoint)
-                setTimeout(function() {
+                // Submit to API
+                fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
                     response.style.display = 'block';
+                    var isZh = document.body.classList.contains('zh');
                     response.innerHTML = '<div style="background:rgba(76,175,80,0.2);color:#4CAF50;padding:15px;border-radius:10px;">' +
-                        '<i class="fas fa-check-circle"></i> Thank you! We will contact you within 24 hours.<br/>' +
-                        '<span style="font-size:12px;opacity:0.8;">謝謝！我們會在24小時內與您聯繫。</span>' +
+                        '<i class="fas fa-check-circle"></i> ' + (isZh ? '谢谢！我们会在24小时内与您联系。' : 'Thank you! We will contact you within 24 hours.') +
                         '</div>';
                     form.reset();
+                })
+                .catch(function(err) {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(244,67,54,0.2);color:#f44336;padding:15px;border-radius:10px;">Error. Please try again.</div>';
+                })
+                .finally(function() {
                     btn.disabled = false;
-                    btn.innerHTML = '<span class="en">Submit Request</span><span class="cn">提交申請</span>';
-                }, 1500);
+                    var isZh = document.body.classList.contains('zh');
+                    btn.innerHTML = isZh ? '发送信息' : 'Send Message';
+                });
             });
             
             function toggleLang() {
@@ -815,29 +853,31 @@
             function openGalleryModal(project) {
                 var projects = {
                     1: {
-                        name: "Roofing Project",
-                        workscope: "Replace ridges & valleys - 200LF\nReplace damaged shingles - 5SQ\n\nTotal: CAD $8,000",
+                        name: "Project 1",
+                        workscope: "Replace all ridges and valleys of roof - approx. 200LF\nReplace severely damaged roof shingles - approx. 5SQ\nReplace all gutters and downspouts - approx. 280LF\n\nTotal Value: approx. CAD $8,000",
                         price: "CAD $8,000",
                         before: [
-                            "Pic%20of%20website/Roof%20B4.JPG",
-                            "Pic%20of%20website/Roof%20B4_1.JPG",
+                            "1/Roof B4.jpg",
+                            "1/Gutter_B4.jpg",
                         ],
                         after: [
-                            "Pic%20of%20website/Roof%20after.JPG",
-                            "Pic%20of%20website/Roof%20after_1.JPG",
+                            "1/Roof after.jpg",
+                            "1/Gutter after.jpg",
                         ],
                     },
                     2: {
-                        name: "Siding Project",
+                        name: "Project 2",
                         workscope: "Replace vinyl siding - 1300 SF\nRepair 3 window frames\n\nTotal: CAD $12,000",
                         price: "CAD $12,000",
                         before: [
-                            "Pic%20of%20website/Siding%20b4_1.jpg",
-                            "Pic%20of%20website/siding%20b4_1.jpg",
+                            "2/Roof B4_1.jpg",
+                            "2/Roof B4_2.jpg",
+                            "2/Roof B4_3.jpg",
                         ],
                         after: [
-                            "Pic%20of%20website/Siding%20after_1.jpg",
-                            "Pic%20of%20website/Siding%20after_2.jpg",
+                            "2/Roof after_1.jpg",
+                            "2/Roof after_2.jpg",
+                            "2/Roof after_3.jpg",
                         ],
                     },
                     3: {
@@ -870,32 +910,32 @@
                 var p = projects[project] || projects[1];
                 var html = '<div class="project-detail" style="max-width:900px;margin:0 auto;">';
                 
-                // Header with title and price
-                html += '<div style="text-align:center;margin-bottom:25px;padding:20px;background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:16px;color:white;">';
-                html += '<h3 style="margin:0 0 12px 0;font-size:26px;">' + p.name + '</h3>';
-                html += '<p style="margin:0;font-size:28px;font-weight:700;color:#4CAF50;">' + (p.price || 'Contact for quote') + '</p>';
-                html += '</div>';
+                // Header with title
+                // Header with title
                 
                 // Work details
-                html += '<div style="background:#f8f8f8;border-radius:12px;padding:20px;margin-bottom:25px;">';
-                html += '<h4 style="margin:0 0 15px 0;color:var(--primary);font-size:18px;">📋 Work Details</h4>';
-                html += '<p style="margin:0;font-size:14px;line-height:1.8;color:#4CAF50;font-weight:600;white-space:pre-line;">' + (p.workscope || '') + '</p>';
+                html += '<div class="workscope-box">';
+                html += '<h4>📋 Work Details</h4>';
+                html += '<p>' + (p.workscope || '') + '</p>';
                 html += '</div>';
                 
-                // Side-by-side Before & After
-                html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#222;border-radius:12px;overflow:hidden;">';
+                // Roof Images
+                html += '<div class="image-section">';
+                html += '<h4>🏠 Roofing</h4>';
+                html += '<div class="ba-grid">';
+                html += '<div><img loading="lazy" src="' + (p.before[0] || '') + '" alt="Before"><span class="label" style="background:rgba(0,0,0,0.8);color:#ff6b6b;">BEFORE</span></div>';
+                html += '<div><img loading="lazy" src="' + (p.after[0] || '') + '" alt="After"><span class="label" style="background:rgba(76,175,80,0.95);color:white;">AFTER</span></div>';
+                html += '</div></div>';
                 
-                // BEFORE
-                html += '<div style="position:relative;background:#333;">';
-                html += '<img loading="lazy" src="' + (p.before[0] || p.before[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="Before">';
-                html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.85);color:#ff6b6b;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">BEFORE</div>';
-                html += '</div>';
-                
-                // AFTER  
-                html += '<div style="position:relative;background:#333;">';
-                html += '<img loading="lazy" src="' + (p.after[0] || p.after[1] || '') + '" style="width:100%;height:300px;object-fit:cover;display:block;" alt="After">';
-                html += '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(76,175,80,0.95);color:white;padding:10px 30px;border-radius:25px;font-size:16px;font-weight:700;letter-spacing:2px;">AFTER</div>';
-                html += '</div>';
+                // Gutter Images (if available)
+                if (p.before[1] && p.after[1]) {
+                    html += '<div class="image-section">';
+                    html += '<h4>🌊 Guttering</h4>';
+                    html += '<div class="ba-grid">';
+                    html += '<div><img loading="lazy" src="' + p.before[1] + '" alt="Before"><span class="label" style="background:rgba(0,0,0,0.8);color:#ff6b6b;">BEFORE</span></div>';
+                    html += '<div><img loading="lazy" src="' + p.after[1] + '" alt="After"><span class="label" style="background:rgba(76,175,80,0.95);color:white;">AFTER</span></div>';
+                    html += '</div></div>';
+                }
                 
                 
                 document.querySelector("#galleryModal .modal-body").innerHTML =
