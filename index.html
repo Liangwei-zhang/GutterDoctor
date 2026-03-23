@@ -508,7 +508,7 @@
                     <span class="en">Contact Us</span>
                     <span class="cn">联系我们</span>
                 </h3>
-                <form id="quoteForm" style="display:grid;gap:15px;">
+                <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display:grid;gap:15px;">
                     <span class="en"><input type="text" name="name" placeholder="Your Name" required maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
                     <span class="cn"><input type="text" name="name" placeholder="您的姓名" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
                     
@@ -805,8 +805,8 @@
                 btn.disabled = true;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
-                // Submit to API
-                fetch('/api/submit', {
+                // Submit to Formspree
+                fetch(form.action, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
