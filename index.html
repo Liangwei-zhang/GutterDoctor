@@ -158,8 +158,8 @@
                     .gallery-project-item .project-label{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);color:white;font-weight:600}
                     @media(max-width:768px){.menu-toggle{display:block}.nav-links{position:fixed;top:70px;left:0;right:0;background:white;flex-direction:column;padding:20px;gap:10px;box-shadow:var(--shadow-elevated);display:none}.nav-links.active{display:flex}.nav-links a{width:100%;text-align:center}.nav-links .btn-quote{margin:10px 0 0}.hero-content h1{font-size:28px}.gallery-projects{grid-template-columns:1fr}.contact-info{flex-direction:column;align-items:center}}
         </style>
-    <link rel="preload" as="image" href="Pic%20of%20website/Pic_Home.png">
-<link rel="preload" as="image" href="Gemini_Generated_Image_t1qemrt1qemrt1qe.png">
+
+
 </head>
     <body>
         <nav class="navbar" id="navbar">
@@ -440,7 +440,7 @@
         </section>
         <section class="section bg-light" id="gallery">
             <h2 class="section-title">
-                <span class="en">Recent Projects</span
+                <span class="en">Project Reference</span
                 ><span class="cn">工程案例</span>
             </h2>
             <div class="gallery-grid">
@@ -450,34 +450,34 @@
                         alt="Project 1"
                     />
                     <div class="gallery-overlay">
-                        <span>Roofing</span>
+                        <span>Project 1</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(2)">
                     <img
-                        src="Pic%20of%20website/front%20.png"
+                        src="2/front%20.jpg"
                         alt="Project 2"
                     />
                     <div class="gallery-overlay">
-                        <span>Siding</span>
+                        <span>Project 2</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(3)">
                     <img
-                        src="Pic%20of%20website/front%20(2).jpg"
+                        src="3/front.jpg"
                         alt="Project 3"
                     />
                     <div class="gallery-overlay">
-                        <span>Guttering</span>
+                        <span>Project 3</span>
                     </div>
                 </div>
                 <div class="gallery-item" onclick="openGalleryModal(4)">
                     <img
-                        src="Pic%20of%20website/front%20(3).jpg"
+                        src="4/front.jpg"
                         alt="Project 4"
                     />
                     <div class="gallery-overlay">
-                        <span>Full Renovation</span>
+                        <span>Project 4</span>
                     </div>
                 </div>
             </div>
@@ -510,10 +510,10 @@
                 </h3>
                 <form id="quoteForm" style="display:grid;gap:15px;">
                     <span class="en"><input type="text" name="name" placeholder="Your Name" required maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
-                    <span class="cn"><input type="text" name="name" placeholder="您的姓名" required maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    <span class="cn"><input type="text" name="name" placeholder="您的姓名" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
                     
                     <span class="en"><input type="tel" name="phone" placeholder="Phone Number" required maxlength="20" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
-                    <span class="cn"><input type="tel" name="phone" placeholder="电话" required maxlength="20" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
+                    <span class="cn"><input type="tel" name="phone" placeholder="电话" maxlength="20" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
                     
                     <span class="en"><input type="email" name="email" placeholder="Email" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
                     <span class="cn"><input type="email" name="email" placeholder="邮箱" maxlength="100" style="padding:14px;border-radius:10px;border:none;font-size:14px;width:100%;" /></span>
@@ -765,10 +765,40 @@
                 var emailField = isZh ? form.querySelector('span.cn input[name="email"]') : form.querySelector('span.en input[name="email"]');
                 var msgField = isZh ? form.querySelector('span.cn textarea[name="message"]') : form.querySelector('span.en textarea[name="message"]');
                 
-                formData.append('name', nameField ? nameField.value : '');
-                formData.append('phone', phoneField ? phoneField.value : '');
-                formData.append('email', emailField ? emailField.value : '');
-                formData.append('message', msgField ? msgField.value : '');
+                var name = nameField ? nameField.value.trim() : '';
+                var phone = phoneField ? phoneField.value.trim() : '';
+                var email = emailField ? emailField.value.trim() : '';
+                var message = msgField ? msgField.value.trim() : '';
+                
+                // Basic validation
+                if (!name) {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(244,67,54,0.2);color:#f44336;padding:15px;border-radius:10px;">' + (isZh ? '请填写姓名' : 'Please enter your name') + '</div>';
+                    return;
+                }
+                if (!phone) {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(244,67,54,0.2);color:#f44336;padding:15px;border-radius:10px;">' + (isZh ? '请填写电话' : 'Please enter your phone number') + '</div>';
+                    return;
+                }
+                // Phone format check
+                var phoneRegex = /^[\d\s\-\+\(\)]{7,20}$/;
+                if (!phoneRegex.test(phone)) {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(244,67,54,0.2);color:#f44336;padding:15px;border-radius:10px;">' + (isZh ? '请输入有效的电话号码' : 'Please enter a valid phone number') + '</div>';
+                    return;
+                }
+                // Email validation (optional but check format if provided)
+                if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    response.style.display = 'block';
+                    response.innerHTML = '<div style="background:rgba(244,67,54,0.2);color:#f44336;padding:15px;border-radius:10px;">' + (isZh ? '请输入有效的邮箱地址' : 'Please enter a valid email address') + '</div>';
+                    return;
+                }
+                
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('email', email);
+                formData.append('message', message);
                 formData.append('service', '');
                 
                 // Show loading state
@@ -838,6 +868,14 @@
             function toggleMenu() {
                 document.getElementById("navLinks").classList.toggle("active");
             }
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                var nav = document.getElementById('navLinks');
+                var toggle = document.querySelector('.menu-toggle');
+                if (nav.classList.contains('active') && !nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove('active');
+                }
+            });
             function openWarrantyModal() {
                 document
                     .getElementById("warrantyModal")
@@ -855,6 +893,7 @@
                     1: {
                         name: "Project 1",
                         workscope: "Replace all ridges and valleys of roof - approx. 200LF\nReplace severely damaged roof shingles - approx. 5SQ\nReplace all gutters and downspouts - approx. 280LF\n\nTotal Value: approx. CAD $8,000",
+                        workscope_zh: "更换所有屋脊和山谷排水 - 约200LF\n更换严重损坏的屋瓦 - 约5SQ\n更换所有排水槽和落水管 - 约280LF\n\n总价值: 约CAD $8,000",
                         price: "CAD $8,000",
                         before: [
                             "1/Roof B4.jpg",
@@ -867,43 +906,70 @@
                     },
                     2: {
                         name: "Project 2",
-                        workscope: "Replace vinyl siding - 1300 SF\nRepair 3 window frames\n\nTotal: CAD $12,000",
-                        price: "CAD $12,000",
+                        workscope: "Replace entired roof - approx. 24SQ\nReplace vinyl siding of 2 sides - approx. 2100SF\nReplace all gutters and downspouts - approx. 250LF\nFix damaged window frames - 3x\n\nTotal Value: approx. CAD 28,000",
+                        workscope_zh: "更换整个屋顶 - 约24SQ\n更换两面乙烯基壁板 - 约2100SF\n更换所有排水槽和落水管 - 约250LF\n修复损坏的窗框 - 3个\n\n总价值: 约CAD $28,000",
+                        price: "CAD $28,000",
                         before: [
                             "2/Roof B4_1.jpg",
                             "2/Roof B4_2.jpg",
                             "2/Roof B4_3.jpg",
+                            "2/siding b4_1.jpg",
+                            "2/siding b4_2.jpg",
+                            "2/gutter b4_1.jpg",
+                            "2/gutter b4_2.jpg",
                         ],
                         after: [
                             "2/Roof after_1.jpg",
                             "2/Roof after_2.jpg",
                             "2/Roof after_3.jpg",
+                            "2/siding after_1.jpg",
+                            "2/siding after_2.jpg",
+                            "2/gutter after_1.jpg",
+                            "2/gutter after_2.jpg",
                         ],
                     },
                     3: {
-                        name: "Guttering Project",
-                        workscope: "Replace gutters & downspouts - 250LF\n\nTotal: CAD $5,000",
-                        price: "CAD $5,000",
+                        name: "Project 3",
+                        workscope: "Replace entired roof - approx. 23.5SQ\nReplace vinyl siding of 2 sides - approx. 1500SF\nReplace all gutters and downspouts - approx. 230LF\n\nTotal Value: approx. CAD 27,000",
+                        workscope_zh: "更换整个屋顶 - 约23.5SQ\n更换两面乙烯基壁板 - 约1500SF\n更换所有排水槽和落水管 - 约230LF\n\n总价值: 约CAD $27,000",
+                        price: "CAD $27,000",
                         before: [
-                            "Pic%20of%20website/Gutter_B4.jpg",
-                            "Pic%20of%20website/gutter%20b4_1.jpg",
+                            "3/roof b4_1.jpg",
+                            "3/roof b4_2.jpg",
+                            "3/Siding b4_1.jpg",
+                            "3/siding b4_2.jpg",
+                            "3/gutter b4_1.jpg",
+                            "3/gutter b4_2.jpg",
                         ],
                         after: [
-                            "Pic%20of%20website/Gutter%20after.jpg",
-                            "Pic%20of%20website/gutter%20after_1.jpg",
+                            "3/Roof after_2.jpg",
+                            "3/roof after_1.jpg",
+                            "3/Siding after_1.jpg",
+                            "3/Siding after_2.jpg",
+                            "3/gutter after_1.jpg",
+                            "3/gutter after_2.jpg",
                         ],
                     },
                     4: {
-                        name: "Full Renovation",
-                        workscope: "Roof - 13 SQ\nSiding - 1300 SF\nGutters - 250LF\nWindow repairs - 3\n\nTotal: CAD $19,000",
+                        name: "Project 4",
+                        workscope: "Replace entired roof - approx. 13SQ\nReplace vinyl siding of 1 side - approx. 1300SF\nReplace all gutters and downspouts - approx. 250LF\nFix damaged window frames - 3x\n\nTotal Value: approx. CAD 19,000",
+                        workscope_zh: "更换整个屋顶 - 约13SQ\n更换一面乙烯基壁板 - 约1300SF\n更换所有排水槽和落水管 - 约250LF\n修复损坏的窗框 - 3个\n\n总价值: 约CAD $19,000",
                         price: "CAD $19,000",
                         before: [
-                            "Pic%20of%20website/siding%20b4_1%20(2).jpg",
-                            "Pic%20of%20website/siding%20b4_1.jpg",
+                            "4/roof b4_1.jpg",
+                            "4/roof b4_2.jpg",
+                            "4/siding b4_1.jpg",
+                            "4/siding b4_2.jpg",
+                            "4/gutter b4_1.jpg",
+                            "4/gutter b4_2.jpg",
                         ],
                         after: [
-                            "Pic%20of%20website/siding%20after_1%20(2).jpg",
-                            "Pic%20of%20website/siding%20after_1.jpg",
+                            "4/roof after.jpg",
+                            "4/roof after.jpg",
+                            "4/siding after_1.jpg",
+                            "4/siding after_2.jpg",
+                            "4/gutter after_1.jpg",
+                            "4/gutter after_2.jpg",
                         ],
                     },
                 };
@@ -912,28 +978,22 @@
                 
                 // Header with title
                 // Header with title
+                var isZh = document.body.classList.contains('zh');
                 
                 // Work details
                 html += '<div class="workscope-box">';
-                html += '<h4>📋 Work Details</h4>';
-                html += '<p>' + (p.workscope || '') + '</p>';
+                html += '<h4>📋 ' + (isZh ? '工程详情' : 'Work Details') + '</h4>';
+                html += '<p>' + (isZh && p.workscope_zh ? p.workscope_zh : (p.workscope || '')) + '</p>';
                 html += '</div>';
                 
-                // Roof Images
-                html += '<div class="image-section">';
-                html += '<h4>🏠 Roofing</h4>';
-                html += '<div class="ba-grid">';
-                html += '<div><img loading="lazy" src="' + (p.before[0] || '') + '" alt="Before"><span class="label" style="background:rgba(0,0,0,0.8);color:#ff6b6b;">BEFORE</span></div>';
-                html += '<div><img loading="lazy" src="' + (p.after[0] || '') + '" alt="After"><span class="label" style="background:rgba(76,175,80,0.95);color:white;">AFTER</span></div>';
-                html += '</div></div>';
-                
-                // Gutter Images (if available)
-                if (p.before[1] && p.after[1]) {
+                // Multiple image pairs - Roofing, Siding, Guttering
+                for (var i = 0; i < p.before.length; i++) {
+                    var sectionName = (isZh ? '图片' : 'Image ') + (i + 1);
                     html += '<div class="image-section">';
-                    html += '<h4>🌊 Guttering</h4>';
+                    html += '<h4>' + sectionName + '</h4>';
                     html += '<div class="ba-grid">';
-                    html += '<div><img loading="lazy" src="' + p.before[1] + '" alt="Before"><span class="label" style="background:rgba(0,0,0,0.8);color:#ff6b6b;">BEFORE</span></div>';
-                    html += '<div><img loading="lazy" src="' + p.after[1] + '" alt="After"><span class="label" style="background:rgba(76,175,80,0.95);color:white;">AFTER</span></div>';
+                    html += '<div><img loading="lazy" src="' + p.before[i] + '" alt="Before"><span class="label" style="background:rgba(0,0,0,0.8);color:#ff6b6b;">' + (isZh ? '之前' : 'BEFORE') + '</span></div>';
+                    html += '<div><img loading="lazy" src="' + p.after[i] + '" alt="After"><span class="label" style="background:rgba(76,175,80,0.95);color:white;">' + (isZh ? '之后' : 'AFTER') + '</span></div>';
                     html += '</div></div>';
                 }
                 
