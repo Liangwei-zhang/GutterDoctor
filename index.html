@@ -805,22 +805,26 @@
                 btn.disabled = true;
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 
-                // Submit to Formspree
-                fetch(form.action, {
+                // Submit to Formspree (AJAX mode)
+                fetch('https://formspree.io/f/xeerbrde', {
                     method: 'POST',
                     headers: {
+                        'Accept': 'application/json',
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     body: new URLSearchParams(formData).toString()
                 })
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    response.style.display = 'block';
-                    var isZh = document.body.classList.contains('zh');
-                    response.innerHTML = '<div style="background:rgba(76,175,80,0.2);color:#4CAF50;padding:15px;border-radius:10px;">' +
-                        '<i class="fas fa-check-circle"></i> ' + (isZh ? '谢谢！我们会在24小时内与您联系。' : 'Thank you! We will contact you within 24 hours.') +
-                        '</div>';
-                    form.reset();
+                .then(function(res) {
+                    if (res.ok) {
+                        response.style.display = 'block';
+                        var isZh = document.body.classList.contains('zh');
+                        response.innerHTML = '<div style="background:rgba(76,175,80,0.2);color:#4CAF50;padding:15px;border-radius:10px;">' +
+                            '<i class="fas fa-check-circle"></i> ' + (isZh ? '谢谢！我们会在24小时内与您联系。' : 'Thank you! We will contact you within 24 hours.') +
+                            '</div>';
+                        form.reset();
+                    } else {
+                        throw new Error('Formspree error');
+                    }
                 })
                 .catch(function(err) {
                     response.style.display = 'block';
